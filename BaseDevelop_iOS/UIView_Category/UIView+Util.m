@@ -44,7 +44,7 @@
 }
 
 - (UIImage*)getSnapshotImage{
-    return [[UIImage alloc]init];
+    return nil;
 }
 
 @end
