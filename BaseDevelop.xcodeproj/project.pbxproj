@@ -13,8 +13,9 @@
 		E64B5A5F1A7F617500568B67 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64B5A5D1A7F617500568B67 /* LaunchScreen.xib */; };
 		E64B5A6B1A7F617500568B67 /* BaseDevelopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A6A1A7F617500568B67 /* BaseDevelopTests.m */; };
 		E64B5A831A7F63DA00568B67 /* libBaseDevelop_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E64B5A781A7F63DA00568B67 /* libBaseDevelop_iOS.a */; };
-		E64B5A931A7F64E100568B67 /* UIView+Coordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A921A7F64E100568B67 /* UIView+Coordinate.m */; };
-		E64B5A941A7F64E100568B67 /* UIView+Coordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A921A7F64E100568B67 /* UIView+Coordinate.m */; };
+		E64B5A991A7F6EEF00568B67 /* UIView+FrameAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E64B5A971A7F6EEF00568B67 /* UIView+FrameAdditions.h */; };
+		E64B5A9A1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */; };
+		E64B5A9B1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,18 +35,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		E64B5A761A7F63DA00568B67 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		E64B5A511A7F617500568B67 /* BaseDevelop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseDevelop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64B5A551A7F617500568B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,8 +49,8 @@
 		E64B5A781A7F63DA00568B67 /* libBaseDevelop_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBaseDevelop_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64B5A821A7F63DA00568B67 /* BaseDevelop_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseDevelop_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64B5A881A7F63DA00568B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E64B5A911A7F64E100568B67 /* UIView+Coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Coordinate.h"; sourceTree = "<group>"; };
-		E64B5A921A7F64E100568B67 /* UIView+Coordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Coordinate.m"; sourceTree = "<group>"; };
+		E64B5A971A7F6EEF00568B67 /* UIView+FrameAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameAdditions.h"; sourceTree = "<group>"; };
+		E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,13 +173,24 @@
 		E64B5A901A7F64CA00568B67 /* UIView_Category */ = {
 			isa = PBXGroup;
 			children = (
-				E64B5A911A7F64E100568B67 /* UIView+Coordinate.h */,
-				E64B5A921A7F64E100568B67 /* UIView+Coordinate.m */,
+				E64B5A971A7F6EEF00568B67 /* UIView+FrameAdditions.h */,
+				E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */,
 			);
 			path = UIView_Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E64B5A951A7F65D200568B67 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E64B5A991A7F6EEF00568B67 /* UIView+FrameAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		E64B5A501A7F617500568B67 /* BaseDevelop */ = {
@@ -233,8 +233,8 @@
 			buildConfigurationList = E64B5A891A7F63DA00568B67 /* Build configuration list for PBXNativeTarget "BaseDevelop_iOS" */;
 			buildPhases = (
 				E64B5A741A7F63DA00568B67 /* Sources */,
+				E64B5A951A7F65D200568B67 /* Headers */,
 				E64B5A751A7F63DA00568B67 /* Frameworks */,
-				E64B5A761A7F63DA00568B67 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -341,7 +341,7 @@
 			files = (
 				E64B5A5A1A7F617500568B67 /* AppDelegate.m in Sources */,
 				E64B5A571A7F617500568B67 /* main.m in Sources */,
-				E64B5A931A7F64E100568B67 /* UIView+Coordinate.m in Sources */,
+				E64B5A9A1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E64B5A941A7F64E100568B67 /* UIView+Coordinate.m in Sources */,
+				E64B5A9B1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
