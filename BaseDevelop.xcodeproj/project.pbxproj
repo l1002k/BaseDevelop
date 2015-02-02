@@ -13,6 +13,8 @@
 		E64B5A5F1A7F617500568B67 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64B5A5D1A7F617500568B67 /* LaunchScreen.xib */; };
 		E64B5A6B1A7F617500568B67 /* BaseDevelopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A6A1A7F617500568B67 /* BaseDevelopTests.m */; };
 		E64B5A831A7F63DA00568B67 /* libBaseDevelop_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E64B5A781A7F63DA00568B67 /* libBaseDevelop_iOS.a */; };
+		E64B5A931A7F64E100568B67 /* UIView+Coordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A921A7F64E100568B67 /* UIView+Coordinate.m */; };
+		E64B5A941A7F64E100568B67 /* UIView+Coordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A921A7F64E100568B67 /* UIView+Coordinate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		E64B5A781A7F63DA00568B67 /* libBaseDevelop_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBaseDevelop_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64B5A821A7F63DA00568B67 /* BaseDevelop_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseDevelop_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64B5A881A7F63DA00568B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E64B5A911A7F64E100568B67 /* UIView+Coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Coordinate.h"; sourceTree = "<group>"; };
+		E64B5A921A7F64E100568B67 /* UIView+Coordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Coordinate.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				E64B5A531A7F617500568B67 /* BaseDevelop */,
+				E64B5A8F1A7F649B00568B67 /* BaseDevelop_iOS */,
 				E64B5A671A7F617500568B67 /* BaseDevelopTests */,
 				E64B5A861A7F63DA00568B67 /* BaseDevelop_iOSTests */,
 				E64B5A521A7F617500568B67 /* Products */,
@@ -166,6 +171,23 @@
 				E64B5A881A7F63DA00568B67 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E64B5A8F1A7F649B00568B67 /* BaseDevelop_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				E64B5A901A7F64CA00568B67 /* UIView_Category */,
+			);
+			path = BaseDevelop_iOS;
+			sourceTree = "<group>";
+		};
+		E64B5A901A7F64CA00568B67 /* UIView_Category */ = {
+			isa = PBXGroup;
+			children = (
+				E64B5A911A7F64E100568B67 /* UIView+Coordinate.h */,
+				E64B5A921A7F64E100568B67 /* UIView+Coordinate.m */,
+			);
+			path = UIView_Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +341,7 @@
 			files = (
 				E64B5A5A1A7F617500568B67 /* AppDelegate.m in Sources */,
 				E64B5A571A7F617500568B67 /* main.m in Sources */,
+				E64B5A931A7F64E100568B67 /* UIView+Coordinate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E64B5A941A7F64E100568B67 /* UIView+Coordinate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
