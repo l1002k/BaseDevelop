@@ -1,0 +1,33 @@
+//
+//  UIView+Util.h
+//  BaseDevelop
+//
+//  Created by leikun on 15-2-2.
+//  Copyright (c) 2015年 leikun. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UIView (Util)
+
+/**
+ *  remove all subviews of this view
+ */
+- (void)removeAllSubViews;
+
+/**
+ * Finds the first descendant view (including this view) that is a kind of that class
+ */
+- (UIView*)descendantOrSelfWithClass:(Class)aClass;
+
+/**
+ * Finds the first ancestor view (including this view) that is a kind of that class
+ */
+- (UIView*)ancestorOrSelfWithClass:(Class)aClass;
+
+/**
+ *  return a snapshot image for this view
+ */
+- (UIImage*)getSnapshotImage;
+
+@end

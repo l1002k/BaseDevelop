@@ -16,6 +16,9 @@
 		E64B5A991A7F6EEF00568B67 /* UIView+FrameAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E64B5A971A7F6EEF00568B67 /* UIView+FrameAdditions.h */; };
 		E64B5A9A1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */; };
 		E64B5A9B1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */; };
+		E64B5A9E1A7F771600568B67 /* UIView+Util.h in Headers */ = {isa = PBXBuildFile; fileRef = E64B5A9C1A7F771600568B67 /* UIView+Util.h */; };
+		E64B5A9F1A7F771600568B67 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A9D1A7F771600568B67 /* UIView+Util.m */; };
+		E64B5AA01A7F771600568B67 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A9D1A7F771600568B67 /* UIView+Util.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,8 @@
 		E64B5A881A7F63DA00568B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E64B5A971A7F6EEF00568B67 /* UIView+FrameAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameAdditions.h"; sourceTree = "<group>"; };
 		E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameAdditions.m"; sourceTree = "<group>"; };
+		E64B5A9C1A7F771600568B67 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
+		E64B5A9D1A7F771600568B67 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +180,8 @@
 			children = (
 				E64B5A971A7F6EEF00568B67 /* UIView+FrameAdditions.h */,
 				E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */,
+				E64B5A9C1A7F771600568B67 /* UIView+Util.h */,
+				E64B5A9D1A7F771600568B67 /* UIView+Util.m */,
 			);
 			path = UIView_Category;
 			sourceTree = "<group>";
@@ -187,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E64B5A991A7F6EEF00568B67 /* UIView+FrameAdditions.h in Headers */,
+				E64B5A9E1A7F771600568B67 /* UIView+Util.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +349,7 @@
 			files = (
 				E64B5A5A1A7F617500568B67 /* AppDelegate.m in Sources */,
 				E64B5A571A7F617500568B67 /* main.m in Sources */,
+				E64B5A9F1A7F771600568B67 /* UIView+Util.m in Sources */,
 				E64B5A9A1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E64B5AA01A7F771600568B67 /* UIView+Util.m in Sources */,
 				E64B5A9B1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
