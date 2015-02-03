@@ -34,17 +34,24 @@
 - (UIView*)ancestorOrSelfWithClass:(Class)aClass {
     if ([self isKindOfClass:aClass]) {
         return self;
-        
     } else if (self.superview) {
         return [self.superview ancestorOrSelfWithClass:aClass];
-        
     } else {
         return nil;
     }
 }
 
 - (UIImage*)getSnapshotImage{
-    return nil;
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [UIScreen mainScreen].scale);
+    if ([self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
+        [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:NO];
+    } else {
+        [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    }
+    // Get the snapshot
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return snapshotImage;
 }
 
 @end

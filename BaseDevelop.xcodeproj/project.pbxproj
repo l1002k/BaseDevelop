@@ -19,6 +19,8 @@
 		E64B5A9E1A7F771600568B67 /* UIView+Util.h in Headers */ = {isa = PBXBuildFile; fileRef = E64B5A9C1A7F771600568B67 /* UIView+Util.h */; };
 		E64B5A9F1A7F771600568B67 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A9D1A7F771600568B67 /* UIView+Util.m */; };
 		E64B5AA01A7F771600568B67 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A9D1A7F771600568B67 /* UIView+Util.m */; };
+		E69DCED21A80A5CE0002712D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCED01A80A5CE0002712D /* MainViewController.m */; };
+		E69DCED31A80A5CE0002712D /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69DCED11A80A5CE0002712D /* MainViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,9 @@
 		E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameAdditions.m"; sourceTree = "<group>"; };
 		E64B5A9C1A7F771600568B67 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
 		E64B5A9D1A7F771600568B67 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
+		E69DCECF1A80A5CE0002712D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		E69DCED01A80A5CE0002712D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		E69DCED11A80A5CE0002712D /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +121,7 @@
 		E64B5A531A7F617500568B67 /* BaseDevelop */ = {
 			isa = PBXGroup;
 			children = (
+				E69DCECE1A80A5CE0002712D /* UIViewController */,
 				E64B5A581A7F617500568B67 /* AppDelegate.h */,
 				E64B5A591A7F617500568B67 /* AppDelegate.m */,
 				E64B5A5B1A7F617500568B67 /* Images.xcassets */,
@@ -184,6 +190,16 @@
 				E64B5A9D1A7F771600568B67 /* UIView+Util.m */,
 			);
 			path = UIView_Category;
+			sourceTree = "<group>";
+		};
+		E69DCECE1A80A5CE0002712D /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E69DCECF1A80A5CE0002712D /* MainViewController.h */,
+				E69DCED01A80A5CE0002712D /* MainViewController.m */,
+				E69DCED11A80A5CE0002712D /* MainViewController.xib */,
+			);
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E64B5A5F1A7F617500568B67 /* LaunchScreen.xib in Resources */,
+				E69DCED31A80A5CE0002712D /* MainViewController.xib in Resources */,
 				E64B5A5C1A7F617500568B67 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +367,7 @@
 				E64B5A5A1A7F617500568B67 /* AppDelegate.m in Sources */,
 				E64B5A571A7F617500568B67 /* main.m in Sources */,
 				E64B5A9F1A7F771600568B67 /* UIView+Util.m in Sources */,
+				E69DCED21A80A5CE0002712D /* MainViewController.m in Sources */,
 				E64B5A9A1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,6 +646,7 @@
 				E64B5A8B1A7F63DA00568B67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E64B5A8C1A7F63DA00568B67 /* Build configuration list for PBXNativeTarget "BaseDevelop_iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -636,6 +655,7 @@
 				E64B5A8E1A7F63DA00568B67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
