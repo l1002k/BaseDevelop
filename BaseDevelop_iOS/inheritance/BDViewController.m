@@ -8,6 +8,7 @@
 
 #import "BDViewController.h"
 #import "UIView+Util.h"
+#import "BDCommonUtil.h"
 
 @interface BDViewController ()
 
@@ -29,8 +30,7 @@
  *
  */
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
-    BOOL isGreaterThanIOS8 = [[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch];
-    if (flag && isGreaterThanIOS8 && ([[self presentedViewControllers] count] > 1)) {
+    if (flag && SystemVersionHigherThanOrEqualTo(@"8.0") && ([[self presentedViewControllers] count] > 1)) {
         UIViewController *topPresentedViewController = [[self presentedViewControllers] lastObject];
         UIView *topPresentedView = [topPresentedViewController.view getSnapshotView];
         [self.presentedViewController.view addSubview:topPresentedView];

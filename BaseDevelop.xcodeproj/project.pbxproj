@@ -24,6 +24,7 @@
 		E69DCEE31A80B7930002712D /* BDViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCEE11A80B7930002712D /* BDViewController.h */; };
 		E69DCEE41A80B7930002712D /* BDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCEE21A80B7930002712D /* BDViewController.m */; };
 		E69DCEE51A80B7930002712D /* BDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCEE21A80B7930002712D /* BDViewController.m */; };
+		E69DCEE81A80CE310002712D /* BDCommonUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCEE71A80CE310002712D /* BDCommonUtil.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		E69DCED91A80B7060002712D /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
 		E69DCEE11A80B7930002712D /* BDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDViewController.h; sourceTree = "<group>"; };
 		E69DCEE21A80B7930002712D /* BDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDViewController.m; sourceTree = "<group>"; };
+		E69DCEE71A80CE310002712D /* BDCommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDCommonUtil.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 		E69DCEE61A80C3E80002712D /* util */ = {
 			isa = PBXGroup;
 			children = (
+				E69DCEE71A80CE310002712D /* BDCommonUtil.h */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E69DCEDA1A80B7060002712D /* UIView+FrameAdditions.h in Headers */,
+				E69DCEE81A80CE310002712D /* BDCommonUtil.h in Headers */,
 				E69DCEDD1A80B7060002712D /* UIView+Util.h in Headers */,
 				E69DCEE31A80B7930002712D /* BDViewController.h in Headers */,
 			);
