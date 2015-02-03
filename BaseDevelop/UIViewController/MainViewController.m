@@ -27,20 +27,9 @@
     redView.backgroundColor = [UIColor redColor];
     [self.view addSubview:redView];
     
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-//    [self performSelector:@selector(test) withObject:nil afterDelay:2.f];
-    
-    [self test];
-}
-
-- (void)test
-{
-    UIView *snopshotView = [redView snapshotViewAfterScreenUpdates:NO];
-    snopshotView.y = 250;
-    [self.view addSubview:snopshotView];
+#ifdef DEBUG
+    NSLog(@"debug");
+#endif
 }
 
 - (void)didReceiveMemoryWarning {

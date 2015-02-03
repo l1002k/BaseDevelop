@@ -13,14 +13,17 @@
 		E64B5A5F1A7F617500568B67 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64B5A5D1A7F617500568B67 /* LaunchScreen.xib */; };
 		E64B5A6B1A7F617500568B67 /* BaseDevelopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A6A1A7F617500568B67 /* BaseDevelopTests.m */; };
 		E64B5A831A7F63DA00568B67 /* libBaseDevelop_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E64B5A781A7F63DA00568B67 /* libBaseDevelop_iOS.a */; };
-		E64B5A991A7F6EEF00568B67 /* UIView+FrameAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E64B5A971A7F6EEF00568B67 /* UIView+FrameAdditions.h */; };
-		E64B5A9A1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */; };
-		E64B5A9B1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */; };
-		E64B5A9E1A7F771600568B67 /* UIView+Util.h in Headers */ = {isa = PBXBuildFile; fileRef = E64B5A9C1A7F771600568B67 /* UIView+Util.h */; };
-		E64B5A9F1A7F771600568B67 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A9D1A7F771600568B67 /* UIView+Util.m */; };
-		E64B5AA01A7F771600568B67 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A9D1A7F771600568B67 /* UIView+Util.m */; };
 		E69DCED21A80A5CE0002712D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCED01A80A5CE0002712D /* MainViewController.m */; };
 		E69DCED31A80A5CE0002712D /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69DCED11A80A5CE0002712D /* MainViewController.xib */; };
+		E69DCEDA1A80B7060002712D /* UIView+FrameAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCED61A80B7060002712D /* UIView+FrameAdditions.h */; };
+		E69DCEDB1A80B7060002712D /* UIView+FrameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCED71A80B7060002712D /* UIView+FrameAdditions.m */; };
+		E69DCEDC1A80B7060002712D /* UIView+FrameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCED71A80B7060002712D /* UIView+FrameAdditions.m */; };
+		E69DCEDD1A80B7060002712D /* UIView+Util.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCED81A80B7060002712D /* UIView+Util.h */; };
+		E69DCEDE1A80B7060002712D /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCED91A80B7060002712D /* UIView+Util.m */; };
+		E69DCEDF1A80B7060002712D /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCED91A80B7060002712D /* UIView+Util.m */; };
+		E69DCEE31A80B7930002712D /* BDViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCEE11A80B7930002712D /* BDViewController.h */; };
+		E69DCEE41A80B7930002712D /* BDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCEE21A80B7930002712D /* BDViewController.m */; };
+		E69DCEE51A80B7930002712D /* BDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCEE21A80B7930002712D /* BDViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,13 +57,15 @@
 		E64B5A781A7F63DA00568B67 /* libBaseDevelop_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBaseDevelop_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64B5A821A7F63DA00568B67 /* BaseDevelop_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseDevelop_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64B5A881A7F63DA00568B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E64B5A971A7F6EEF00568B67 /* UIView+FrameAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameAdditions.h"; sourceTree = "<group>"; };
-		E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameAdditions.m"; sourceTree = "<group>"; };
-		E64B5A9C1A7F771600568B67 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
-		E64B5A9D1A7F771600568B67 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
 		E69DCECF1A80A5CE0002712D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		E69DCED01A80A5CE0002712D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E69DCED11A80A5CE0002712D /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		E69DCED61A80B7060002712D /* UIView+FrameAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameAdditions.h"; sourceTree = "<group>"; };
+		E69DCED71A80B7060002712D /* UIView+FrameAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameAdditions.m"; sourceTree = "<group>"; };
+		E69DCED81A80B7060002712D /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
+		E69DCED91A80B7060002712D /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
+		E69DCEE11A80B7930002712D /* BDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDViewController.h; sourceTree = "<group>"; };
+		E69DCEE21A80B7930002712D /* BDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,20 +181,11 @@
 		E64B5A8F1A7F649B00568B67 /* BaseDevelop_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				E64B5A901A7F64CA00568B67 /* UIView_Category */,
+				E69DCEE61A80C3E80002712D /* util */,
+				E69DCEE01A80B7790002712D /* inheritance */,
+				E69DCED41A80B7060002712D /* category */,
 			);
 			path = BaseDevelop_iOS;
-			sourceTree = "<group>";
-		};
-		E64B5A901A7F64CA00568B67 /* UIView_Category */ = {
-			isa = PBXGroup;
-			children = (
-				E64B5A971A7F6EEF00568B67 /* UIView+FrameAdditions.h */,
-				E64B5A981A7F6EEF00568B67 /* UIView+FrameAdditions.m */,
-				E64B5A9C1A7F771600568B67 /* UIView+Util.h */,
-				E64B5A9D1A7F771600568B67 /* UIView+Util.m */,
-			);
-			path = UIView_Category;
 			sourceTree = "<group>";
 		};
 		E69DCECE1A80A5CE0002712D /* UIViewController */ = {
@@ -202,6 +198,41 @@
 			path = UIViewController;
 			sourceTree = "<group>";
 		};
+		E69DCED41A80B7060002712D /* category */ = {
+			isa = PBXGroup;
+			children = (
+				E69DCED51A80B7060002712D /* UIView */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		E69DCED51A80B7060002712D /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				E69DCED61A80B7060002712D /* UIView+FrameAdditions.h */,
+				E69DCED71A80B7060002712D /* UIView+FrameAdditions.m */,
+				E69DCED81A80B7060002712D /* UIView+Util.h */,
+				E69DCED91A80B7060002712D /* UIView+Util.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		E69DCEE01A80B7790002712D /* inheritance */ = {
+			isa = PBXGroup;
+			children = (
+				E69DCEE11A80B7930002712D /* BDViewController.h */,
+				E69DCEE21A80B7930002712D /* BDViewController.m */,
+			);
+			path = inheritance;
+			sourceTree = "<group>";
+		};
+		E69DCEE61A80C3E80002712D /* util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -209,8 +240,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E64B5A991A7F6EEF00568B67 /* UIView+FrameAdditions.h in Headers */,
-				E64B5A9E1A7F771600568B67 /* UIView+Util.h in Headers */,
+				E69DCEDA1A80B7060002712D /* UIView+FrameAdditions.h in Headers */,
+				E69DCEDD1A80B7060002712D /* UIView+Util.h in Headers */,
+				E69DCEE31A80B7930002712D /* BDViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,11 +396,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E69DCEE41A80B7930002712D /* BDViewController.m in Sources */,
+				E69DCEDE1A80B7060002712D /* UIView+Util.m in Sources */,
+				E69DCEDB1A80B7060002712D /* UIView+FrameAdditions.m in Sources */,
 				E64B5A5A1A7F617500568B67 /* AppDelegate.m in Sources */,
 				E64B5A571A7F617500568B67 /* main.m in Sources */,
-				E64B5A9F1A7F771600568B67 /* UIView+Util.m in Sources */,
 				E69DCED21A80A5CE0002712D /* MainViewController.m in Sources */,
-				E64B5A9A1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,8 +417,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E64B5AA01A7F771600568B67 /* UIView+Util.m in Sources */,
-				E64B5A9B1A7F6EEF00568B67 /* UIView+FrameAdditions.m in Sources */,
+				E69DCEE51A80B7930002712D /* BDViewController.m in Sources */,
+				E69DCEDF1A80B7060002712D /* UIView+Util.m in Sources */,
+				E69DCEDC1A80B7060002712D /* UIView+FrameAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

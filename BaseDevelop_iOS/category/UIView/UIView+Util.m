@@ -41,7 +41,7 @@
     }
 }
 
-- (UIImage*)getSnapshotImage{
+- (UIImage*)getSnapshotImage {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [UIScreen mainScreen].scale);
     if ([self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
         [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:NO];
@@ -52,6 +52,17 @@
     UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return snapshotImage;
+}
+
+- (UIView *)getSnapshotImageView {
+    if ([self respondsToSelector:@selector(snapshotViewAfterScreenUpdates:)]) {
+        return [self snapshotViewAfterScreenUpdates:NO];
+    } else {
+        UIImage *snapshotImage = [self getSnapshotImage];
+        UIImageView *snapshotImageView = [[UIImageView alloc]initWithImage:snapshotImage];
+        snapshotImageView.frame = self.frame;
+        return snapshotImageView;
+    }
 }
 
 @end

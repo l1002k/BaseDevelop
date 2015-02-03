@@ -30,4 +30,11 @@
  */
 - (UIImage*)getSnapshotImage;
 
+/**
+ *  return a snapshot view of this view.
+ *
+ *  lower than iOS7 return a UIImageView by call -[UIView getSnapshotImage], otherwise, return -[UIView snapshotViewAfterScreenUpdates:]
+ */
+- (UIView *)getSnapshotView;
+
 @end
