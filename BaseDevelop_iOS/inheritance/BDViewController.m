@@ -11,8 +11,6 @@
 #import "BDCommonUtil.h"
 #import "BDViewControllerCommonConfig.h"
 
-static BOOL isStatusBarBasedViewController = NO;
-
 @interface BDViewController () {
     BDViewControllerCommonConfig *_commonConfig;
 }
@@ -21,21 +19,10 @@ static BOOL isStatusBarBasedViewController = NO;
 
 @implementation BDViewController
 
-+ (void)initialize
-{
-    if (self == [self class]) {
-        NSNumber *statusBarConfig = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"];
-        if (!statusBarConfig || statusBarConfig.boolValue) {
-            isStatusBarBasedViewController = YES;
-        } else {
-            isStatusBarBasedViewController = NO;
-        }
-    }
-}
-
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        // init common config for view controller
         _commonConfig = [[BDViewControllerCommonConfig alloc] init];
     }
     return self;
@@ -49,16 +36,21 @@ static BOOL isStatusBarBasedViewController = NO;
 #pragma mark
 #pragma mark - statusBar
 - (void)setStatusBarHidden:(BOOL)hidden {
-    [self setStatusBarHidden:hidden withAnimation:UIStatusBarAnimationNone];
+    [self setStatusBarHidden:hidden withAnimationOnlyOnce:UIStatusBarAnimationNone];
 }
 
-- (void)setStatusBarHidden:(BOOL)hidden withAnimation:(UIStatusBarAnimation)animation {
+- (void)setStatusBarHidden:(BOOL)hidden withAnimationOnlyOnce:(UIStatusBarAnimation)animation {
     _commonConfig.isStatusBarHidden = hidden;
-    if (isStatusBarBasedViewController) {
-        [self setNeedsStatusBarAppearanceUpdate];
-    } else {
-        [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:animation];
-    }
+    UIStatusBarAnimation oldAnimation = _commonConfig.statusBarUpdateAnimation;
+    _commonConfig.statusBarUpdateAnimation = animation;
+    [self setNeedsStatusBarAppearanceUpdateAnimated:(animation != UIStatusBarAnimationNone) completion:NULL];
+    _commonConfig.statusBarUpdateAnimation = oldAnimation;
+}
+
+- (void)setStatusBarHidden:(BOOL)hidden withAnimationForEver:(UIStatusBarAnimation)animation {
+    _commonConfig.isStatusBarHidden = hidden;
+    _commonConfig.statusBarUpdateAnimation = animation;
+    [self setNeedsStatusBarAppearanceUpdateAnimated:(animation != UIStatusBarAnimationNone) completion:NULL];
 }
 
 - (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle {
@@ -67,14 +59,17 @@ static BOOL isStatusBarBasedViewController = NO;
 
 - (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle animated:(BOOL)animated {
     _commonConfig.statusBarStyle = statusBarStyle;
-    if (isStatusBarBasedViewController) {
-        [UIView animateWithDuration:animated?0.2f:0.f delay:0.f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self setNeedsStatusBarAppearanceUpdate];
-        } completion:NULL];
-        
-    } else {
-        [[UIApplication sharedApplication] setStatusBarStyle:statusBarStyle animated:animated];
-    }
+    [self setNeedsStatusBarAppearanceUpdateAnimated:animated completion:NULL];
+}
+
+- (void)setNeedsStatusBarAppearanceUpdateAnimated:(BOOL)animated completion:(void (^)(void))completion {
+    [UIView animateWithDuration:animated?0.2f:0.f delay:0.f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [self setNeedsStatusBarAppearanceUpdate];
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion();
+        }
+    }];
 }
 
 #pragma mark - override UIViewController statusBar config

@@ -31,11 +31,26 @@
 }
 
 - (IBAction)buttonAction:(id)sender {
-    if ([UIApplication sharedApplication].statusBarStyle == UIStatusBarStyleLightContent) {
-        [self setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+//    if ([UIApplication sharedApplication].statusBarStyle == UIStatusBarStyleLightContent) {
+//        [self setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+//    } else {
+//        [self setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+//    }
+    if ([UIApplication sharedApplication].statusBarHidden) {
+        [UIView animateWithDuration:1.f delay:0.f options:UIViewAnimationOptionCurveEaseIn animations:^{
+            [sender setY:164];
+            [self setStatusBarHidden:NO withAnimationOnlyOnce:UIStatusBarAnimationSlide];
+        } completion:NULL];
+        
     } else {
-        [self setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+        [UIView animateWithDuration:1.f delay:0.f options:UIViewAnimationOptionCurveEaseOut animations:^
+        {
+            [sender setY:254];
+            [self setStatusBarHidden:YES withAnimationOnlyOnce:UIStatusBarAnimationSlide];
+        } completion:NULL];
+        
     }
+    
 }
 
 - (void)didReceiveMemoryWarning {

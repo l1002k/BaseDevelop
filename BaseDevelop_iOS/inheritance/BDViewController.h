@@ -12,7 +12,8 @@
 
 //-----------------statusBar-------------------------//
 - (void)setStatusBarHidden:(BOOL)hidden;
-- (void)setStatusBarHidden:(BOOL)hidden withAnimation:(UIStatusBarAnimation)animation;
+- (void)setStatusBarHidden:(BOOL)hidden withAnimationOnlyOnce:(UIStatusBarAnimation)animation;
+- (void)setStatusBarHidden:(BOOL)hidden withAnimationForEver:(UIStatusBarAnimation)animation;
 - (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle;
 - (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle animated:(BOOL)animated;
 //-----------------statusBar end---------------------//
