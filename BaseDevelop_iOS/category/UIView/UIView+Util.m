@@ -54,7 +54,7 @@
     return snapshotImage;
 }
 
-- (UIView *)getSnapshotImageView {
+- (UIView *)getSnapshotView {
     if ([self respondsToSelector:@selector(snapshotViewAfterScreenUpdates:)]) {
         return [self snapshotViewAfterScreenUpdates:NO];
     } else {

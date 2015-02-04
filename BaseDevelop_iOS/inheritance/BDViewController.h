@@ -10,6 +10,15 @@
 
 @interface BDViewController : UIViewController
 
+//-----------------statusBar-------------------------//
+- (void)setStatusBarHidden:(BOOL)hidden;
+- (void)setStatusBarHidden:(BOOL)hidden withAnimation:(UIStatusBarAnimation)animation;
+- (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle;
+- (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle animated:(BOOL)animated;
+//-----------------statusBar end---------------------//
+
+//--------------present && dismiss------------------//
+
 /**
  *  The view controllers which is presented by self or self.presentedViewController. except self
  *
@@ -23,5 +32,7 @@
  *  @return NSArray<UIViewController *> or nil
  */
 - (NSArray *)presentingViewControllers;
+
+//--------------present && dismiss end----------------//
 
 @end

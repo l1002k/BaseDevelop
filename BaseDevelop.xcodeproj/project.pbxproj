@@ -25,6 +25,9 @@
 		E69DCEE41A80B7930002712D /* BDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCEE21A80B7930002712D /* BDViewController.m */; };
 		E69DCEE51A80B7930002712D /* BDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCEE21A80B7930002712D /* BDViewController.m */; };
 		E69DCEE81A80CE310002712D /* BDCommonUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCEE71A80CE310002712D /* BDCommonUtil.h */; };
+		E69DCF841A81BDFB0002712D /* BDViewControllerCommonConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCF821A81BDFB0002712D /* BDViewControllerCommonConfig.h */; };
+		E69DCF851A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF831A81BDFB0002712D /* BDViewControllerCommonConfig.m */; };
+		E69DCF861A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF831A81BDFB0002712D /* BDViewControllerCommonConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,8 @@
 		E69DCEE11A80B7930002712D /* BDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDViewController.h; sourceTree = "<group>"; };
 		E69DCEE21A80B7930002712D /* BDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDViewController.m; sourceTree = "<group>"; };
 		E69DCEE71A80CE310002712D /* BDCommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDCommonUtil.h; sourceTree = "<group>"; };
+		E69DCF821A81BDFB0002712D /* BDViewControllerCommonConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDViewControllerCommonConfig.h; sourceTree = "<group>"; };
+		E69DCF831A81BDFB0002712D /* BDViewControllerCommonConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDViewControllerCommonConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +227,7 @@
 		E69DCEE01A80B7790002712D /* inheritance */ = {
 			isa = PBXGroup;
 			children = (
+				E69DCF811A81BDFB0002712D /* BDViewController */,
 				E69DCEE11A80B7930002712D /* BDViewController.h */,
 				E69DCEE21A80B7930002712D /* BDViewController.m */,
 			);
@@ -236,6 +242,15 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		E69DCF811A81BDFB0002712D /* BDViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E69DCF821A81BDFB0002712D /* BDViewControllerCommonConfig.h */,
+				E69DCF831A81BDFB0002712D /* BDViewControllerCommonConfig.m */,
+			);
+			path = BDViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -244,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E69DCEDA1A80B7060002712D /* UIView+FrameAdditions.h in Headers */,
+				E69DCF841A81BDFB0002712D /* BDViewControllerCommonConfig.h in Headers */,
 				E69DCEE81A80CE310002712D /* BDCommonUtil.h in Headers */,
 				E69DCEDD1A80B7060002712D /* UIView+Util.h in Headers */,
 				E69DCEE31A80B7930002712D /* BDViewController.h in Headers */,
@@ -403,6 +419,7 @@
 				E69DCEE41A80B7930002712D /* BDViewController.m in Sources */,
 				E69DCEDE1A80B7060002712D /* UIView+Util.m in Sources */,
 				E69DCEDB1A80B7060002712D /* UIView+FrameAdditions.m in Sources */,
+				E69DCF851A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */,
 				E64B5A5A1A7F617500568B67 /* AppDelegate.m in Sources */,
 				E64B5A571A7F617500568B67 /* main.m in Sources */,
 				E69DCED21A80A5CE0002712D /* MainViewController.m in Sources */,
@@ -422,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E69DCEE51A80B7930002712D /* BDViewController.m in Sources */,
+				E69DCF861A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */,
 				E69DCEDF1A80B7060002712D /* UIView+Util.m in Sources */,
 				E69DCEDC1A80B7060002712D /* UIView+FrameAdditions.m in Sources */,
 			);

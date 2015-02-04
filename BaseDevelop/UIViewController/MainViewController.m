@@ -23,9 +23,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.view.backgroundColor = [UIColor magentaColor];
+    
     redView = [[UIView alloc]initWithFrame:CGRectMake(0, 100, self.view.width, 100)];
     redView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:redView];
+//    [self.view addSubview:redView];
+}
+
+- (IBAction)buttonAction:(id)sender {
+    if ([UIApplication sharedApplication].statusBarStyle == UIStatusBarStyleLightContent) {
+        [self setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    } else {
+        [self setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

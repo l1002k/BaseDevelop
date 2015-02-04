@@ -6,8 +6,10 @@
 //  Copyright (c) 2015年 leikun. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BDViewController.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : BDViewController
+
+- (IBAction)buttonAction:(id)sender;
 
 @end
