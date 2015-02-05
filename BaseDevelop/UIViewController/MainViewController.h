@@ -10,6 +10,10 @@
 
 @interface MainViewController : BDViewController
 
-- (IBAction)buttonAction:(id)sender;
+@property(nonatomic) int index;
+
+- (IBAction)statusBarAction:(id)sender;
+- (IBAction)presentAction:(id)sender;
+- (IBAction)pushAction:(id)sender;
 
 @end

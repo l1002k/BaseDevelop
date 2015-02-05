@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "BDNavigationViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +23,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     MainViewController *mainVC = [[MainViewController alloc]init];
-    self.window.rootViewController = mainVC;
+    BDNavigationViewController *navi = [[BDNavigationViewController alloc]initWithRootViewController:mainVC];
+    self.window.rootViewController = navi;
     
     [self.window makeKeyAndVisible];
     return YES;

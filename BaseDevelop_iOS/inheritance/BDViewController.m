@@ -33,6 +33,42 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"%@ viewWillAppear: %@", NSStringFromClass(self.class), @(animated));
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSLog(@"%@ viewDidAppear: %@", NSStringFromClass(self.class), @(animated));
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"%@ viewWillDisappear: %@", NSStringFromClass(self.class), @(animated));
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    NSLog(@"%@ viewDidDisappear: %@", NSStringFromClass(self.class), @(animated));
+}
+
+- (void)willPush:(UIViewController *)pushingViewController animated:(BOOL)animated {
+    NSLog(@"%@ willPush: %@ animated: %@", NSStringFromClass(self.class), NSStringFromClass(pushingViewController.class), @(animated));
+}
+
+- (void)didPush:(UIViewController *)pushingViewController animated:(BOOL)animated {
+    NSLog(@"%@ didPush: %@ animated: %@", NSStringFromClass(self.class), NSStringFromClass(pushingViewController.class), @(animated));
+}
+
+- (void)willPushedBy:(UIViewController *)pushedViewController animated:(BOOL)animated {
+    NSLog(@"%@ willPushedBy: %@ animated: %@", NSStringFromClass(self.class), NSStringFromClass(pushedViewController.class), @(animated));
+}
+
+- (void)didPushedBy:(UIViewController *)pushedViewController animated:(BOOL)animated {
+    NSLog(@"%@ didPushedBy: %@ animated: %@", NSStringFromClass(self.class), NSStringFromClass(pushedViewController.class), @(animated));
+}
+
 #pragma mark
 #pragma mark - statusBar
 - (void)setStatusBarHidden:(BOOL)hidden {
@@ -43,14 +79,16 @@
     _commonConfig.isStatusBarHidden = hidden;
     UIStatusBarAnimation oldAnimation = _commonConfig.statusBarUpdateAnimation;
     _commonConfig.statusBarUpdateAnimation = animation;
-    [self setNeedsStatusBarAppearanceUpdateAnimated:(animation != UIStatusBarAnimationNone) completion:NULL];
+//    [self setNeedsStatusBarAppearanceUpdateAnimated:(animation != UIStatusBarAnimationNone) completion:nil];
+    [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:animation];
     _commonConfig.statusBarUpdateAnimation = oldAnimation;
 }
 
 - (void)setStatusBarHidden:(BOOL)hidden withAnimationForEver:(UIStatusBarAnimation)animation {
     _commonConfig.isStatusBarHidden = hidden;
     _commonConfig.statusBarUpdateAnimation = animation;
-    [self setNeedsStatusBarAppearanceUpdateAnimated:(animation != UIStatusBarAnimationNone) completion:NULL];
+//    [self setNeedsStatusBarAppearanceUpdateAnimated:(animation != UIStatusBarAnimationNone) completion:NULL];
+    [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:animation];
 }
 
 - (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle {

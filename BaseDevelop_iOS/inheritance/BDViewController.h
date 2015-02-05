@@ -10,6 +10,12 @@
 
 @interface BDViewController : UIViewController
 
+
+- (void)willPush:(UIViewController *)pushingViewController animated:(BOOL)animated;
+- (void)didPush:(UIViewController *)pushingViewController animated:(BOOL)animated;
+- (void)willPushedBy:(UIViewController *)pushedViewController animated:(BOOL)animated;
+- (void)didPushedBy:(UIViewController *)pushedViewController animated:(BOOL)animated;
+
 //-----------------statusBar-------------------------//
 - (void)setStatusBarHidden:(BOOL)hidden;
 - (void)setStatusBarHidden:(BOOL)hidden withAnimationOnlyOnce:(UIStatusBarAnimation)animation;

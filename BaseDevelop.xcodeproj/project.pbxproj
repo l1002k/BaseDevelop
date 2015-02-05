@@ -28,6 +28,13 @@
 		E69DCF841A81BDFB0002712D /* BDViewControllerCommonConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCF821A81BDFB0002712D /* BDViewControllerCommonConfig.h */; };
 		E69DCF851A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF831A81BDFB0002712D /* BDViewControllerCommonConfig.m */; };
 		E69DCF861A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF831A81BDFB0002712D /* BDViewControllerCommonConfig.m */; };
+		E69DCF8C1A81FF350002712D /* PushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF8A1A81FF350002712D /* PushViewController.m */; };
+		E69DCF8D1A81FF350002712D /* PushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69DCF8B1A81FF350002712D /* PushViewController.xib */; };
+		E69DCF911A81FFD20002712D /* PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF8F1A81FFD20002712D /* PresentViewController.m */; };
+		E69DCF921A81FFD20002712D /* PresentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69DCF901A81FFD20002712D /* PresentViewController.xib */; };
+		E69DCF951A83009A0002712D /* BDNavigationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCF931A83009A0002712D /* BDNavigationViewController.h */; };
+		E69DCF961A83009A0002712D /* BDNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF941A83009A0002712D /* BDNavigationViewController.m */; };
+		E69DCF971A83009A0002712D /* BDNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF941A83009A0002712D /* BDNavigationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +80,14 @@
 		E69DCEE71A80CE310002712D /* BDCommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDCommonUtil.h; sourceTree = "<group>"; };
 		E69DCF821A81BDFB0002712D /* BDViewControllerCommonConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDViewControllerCommonConfig.h; sourceTree = "<group>"; };
 		E69DCF831A81BDFB0002712D /* BDViewControllerCommonConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDViewControllerCommonConfig.m; sourceTree = "<group>"; };
+		E69DCF891A81FF350002712D /* PushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushViewController.h; sourceTree = "<group>"; };
+		E69DCF8A1A81FF350002712D /* PushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushViewController.m; sourceTree = "<group>"; };
+		E69DCF8B1A81FF350002712D /* PushViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PushViewController.xib; sourceTree = "<group>"; };
+		E69DCF8E1A81FFD20002712D /* PresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentViewController.h; sourceTree = "<group>"; };
+		E69DCF8F1A81FFD20002712D /* PresentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentViewController.m; sourceTree = "<group>"; };
+		E69DCF901A81FFD20002712D /* PresentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentViewController.xib; sourceTree = "<group>"; };
+		E69DCF931A83009A0002712D /* BDNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDNavigationViewController.h; sourceTree = "<group>"; };
+		E69DCF941A83009A0002712D /* BDNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDNavigationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +216,12 @@
 				E69DCECF1A80A5CE0002712D /* MainViewController.h */,
 				E69DCED01A80A5CE0002712D /* MainViewController.m */,
 				E69DCED11A80A5CE0002712D /* MainViewController.xib */,
+				E69DCF891A81FF350002712D /* PushViewController.h */,
+				E69DCF8A1A81FF350002712D /* PushViewController.m */,
+				E69DCF8B1A81FF350002712D /* PushViewController.xib */,
+				E69DCF8E1A81FFD20002712D /* PresentViewController.h */,
+				E69DCF8F1A81FFD20002712D /* PresentViewController.m */,
+				E69DCF901A81FFD20002712D /* PresentViewController.xib */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -230,6 +251,8 @@
 				E69DCF811A81BDFB0002712D /* BDViewController */,
 				E69DCEE11A80B7930002712D /* BDViewController.h */,
 				E69DCEE21A80B7930002712D /* BDViewController.m */,
+				E69DCF931A83009A0002712D /* BDNavigationViewController.h */,
+				E69DCF941A83009A0002712D /* BDNavigationViewController.m */,
 			);
 			path = inheritance;
 			sourceTree = "<group>";
@@ -261,6 +284,7 @@
 				E69DCEDA1A80B7060002712D /* UIView+FrameAdditions.h in Headers */,
 				E69DCF841A81BDFB0002712D /* BDViewControllerCommonConfig.h in Headers */,
 				E69DCEE81A80CE310002712D /* BDCommonUtil.h in Headers */,
+				E69DCF951A83009A0002712D /* BDNavigationViewController.h in Headers */,
 				E69DCEDD1A80B7060002712D /* UIView+Util.h in Headers */,
 				E69DCEE31A80B7930002712D /* BDViewController.h in Headers */,
 			);
@@ -389,8 +413,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E69DCF921A81FFD20002712D /* PresentViewController.xib in Resources */,
 				E64B5A5F1A7F617500568B67 /* LaunchScreen.xib in Resources */,
 				E69DCED31A80A5CE0002712D /* MainViewController.xib in Resources */,
+				E69DCF8D1A81FF350002712D /* PushViewController.xib in Resources */,
 				E64B5A5C1A7F617500568B67 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,7 +448,10 @@
 				E69DCF851A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */,
 				E64B5A5A1A7F617500568B67 /* AppDelegate.m in Sources */,
 				E64B5A571A7F617500568B67 /* main.m in Sources */,
+				E69DCF8C1A81FF350002712D /* PushViewController.m in Sources */,
 				E69DCED21A80A5CE0002712D /* MainViewController.m in Sources */,
+				E69DCF961A83009A0002712D /* BDNavigationViewController.m in Sources */,
+				E69DCF911A81FFD20002712D /* PresentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +470,7 @@
 				E69DCEE51A80B7930002712D /* BDViewController.m in Sources */,
 				E69DCF861A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */,
 				E69DCEDF1A80B7060002712D /* UIView+Util.m in Sources */,
+				E69DCF971A83009A0002712D /* BDNavigationViewController.m in Sources */,
 				E69DCEDC1A80B7060002712D /* UIView+FrameAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,6 +591,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = BaseDevelop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -572,6 +603,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = BaseDevelop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
