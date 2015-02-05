@@ -26,7 +26,7 @@
     
     UINavigationController *vc = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     
-    [vc.topViewController dismissViewControllerAnimated:YES completion:NULL];
+    [vc dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)didReceiveMemoryWarning {

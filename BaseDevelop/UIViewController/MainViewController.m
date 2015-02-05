@@ -27,7 +27,6 @@
     // Do any additional setup after loading the view from its nib.
     if (_index == 0) {
         self.view.backgroundColor = [UIColor magentaColor];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss:)];
     } else if (_index == 1){
         self.view.backgroundColor = [UIColor blueColor];
     } else if (_index == 2) {
@@ -35,11 +34,18 @@
     } else if (_index == 3) {
         self.view.backgroundColor = [UIColor cyanColor];
     }
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss:)];
     self.title = [NSString stringWithFormat:@"main view controller %d",_index];
 }
 
 - (void)dismiss:(UIBarButtonItem *)sender {
-    NSLog(@"test");
+//    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+//        NSLog(@"test");
+//        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:self.navigationController animated:YES completion:^{
+//            NSLog(@"test");
+//        }];
+//    }];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,20 +67,21 @@
 //    }
     if ([UIApplication sharedApplication].statusBarHidden) {
         isHidden = NO;
-        [self setStatusBarHidden:NO withAnimationOnlyOnce:UIStatusBarAnimationSlide];
+        [self setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     } else {
         isHidden = YES;
-        [self setStatusBarHidden:YES withAnimationOnlyOnce:UIStatusBarAnimationSlide];
+        [self setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     }
 }
 
 - (IBAction)presentAction:(id)sender {
     UIViewController *vc = nil;
-    if (_index != 1) {
-        MainViewController *mainVC = [MainViewController new];
-        mainVC.index = _index + 1;
-        vc = mainVC;
-    } else {
+//    if (_index != 1) {
+//        MainViewController *mainVC = [MainViewController new];
+//        mainVC.index = _index + 1;
+//        vc = mainVC;
+//    } else
+    {
         PresentViewController *present = [PresentViewController new];
         vc = present;
     }

@@ -11,6 +11,8 @@
 #import "BDCommonUtil.h"
 #import "BDViewControllerCommonConfig.h"
 
+static BOOL BDVCIsPresentAndDismissAnimated = NO;
+
 @interface BDViewController () {
     BDViewControllerCommonConfig *_commonConfig;
 }
@@ -33,61 +35,87 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    NSLog(@"%@ viewWillAppear: %@", NSStringFromClass(self.class), @(animated));
+
+#pragma mark
+#pragma mark - push method
+- (void)willPush:(BDViewController *)pushedViewController animated:(BOOL)animated {
+    
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    NSLog(@"%@ viewDidAppear: %@", NSStringFromClass(self.class), @(animated));
+- (void)didPush:(BDViewController *)pushedViewController animated:(BOOL)animated {
+    
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    NSLog(@"%@ viewWillDisappear: %@", NSStringFromClass(self.class), @(animated));
+- (void)willPushedBy:(BDViewController *)pushingViewController animated:(BOOL)animated {
+    
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    NSLog(@"%@ viewDidDisappear: %@", NSStringFromClass(self.class), @(animated));
+- (void)didPushedBy:(BDViewController *)pushingViewController animated:(BOOL)animated {
+    
 }
 
-- (void)willPush:(UIViewController *)pushingViewController animated:(BOOL)animated {
-    NSLog(@"%@ willPush: %@ animated: %@", NSStringFromClass(self.class), NSStringFromClass(pushingViewController.class), @(animated));
+#pragma mark
+#pragma mark - pop method
+- (void)willPopTo:(BDViewController *)pushingViewController animated:(BOOL)animated {
+    
 }
 
-- (void)didPush:(UIViewController *)pushingViewController animated:(BOOL)animated {
-    NSLog(@"%@ didPush: %@ animated: %@", NSStringFromClass(self.class), NSStringFromClass(pushingViewController.class), @(animated));
+- (void)didPopTo:(BDViewController *)pushingViewController animated:(BOOL)animated {
+    
 }
 
-- (void)willPushedBy:(UIViewController *)pushedViewController animated:(BOOL)animated {
-    NSLog(@"%@ willPushedBy: %@ animated: %@", NSStringFromClass(self.class), NSStringFromClass(pushedViewController.class), @(animated));
+- (void)willPopFrom:(BDViewController *)pushedViewController animated:(BOOL)animated {
+    
 }
 
-- (void)didPushedBy:(UIViewController *)pushedViewController animated:(BOOL)animated {
-    NSLog(@"%@ didPushedBy: %@ animated: %@", NSStringFromClass(self.class), NSStringFromClass(pushedViewController.class), @(animated));
+- (void)didPopFrom:(BDViewController *)pushedViewController animated:(BOOL)animated {
+    
+}
+
+#pragma mark
+#pragma mark - present method
+- (void)willPresent:(BDViewController *)presentedViewController animated:(BOOL)animated {
+    
+}
+
+- (void)didPresent:(BDViewController *)presentedViewController animated:(BOOL)animated {
+    
+}
+
+- (void)willPresentedBy:(BDViewController *)presentingViewController animated:(BOOL)animated {
+    
+}
+
+- (void)didPresentedBy:(BDViewController *)presentingViewController animated:(BOOL)animated {
+    
+}
+
+#pragma mark
+#pragma mark - dismiss method
+- (void)willDismissTo:(BDViewController *)presentingViewController animated:(BOOL)animated {
+    
+}
+
+- (void)didDismissTo:(BDViewController *)presentingViewController animated:(BOOL)animated {
+    
+}
+
+- (void)willDismissedFrom:(BDViewController *)dismissedViewController animated:(BOOL)animated {
+    
+}
+
+- (void)didDismissedFrom:(BDViewController *)dismissedViewController animated:(BOOL)animated {
+    
 }
 
 #pragma mark
 #pragma mark - statusBar
 - (void)setStatusBarHidden:(BOOL)hidden {
-    [self setStatusBarHidden:hidden withAnimationOnlyOnce:UIStatusBarAnimationNone];
+    [self setStatusBarHidden:hidden withAnimation:UIStatusBarAnimationNone];
 }
 
-- (void)setStatusBarHidden:(BOOL)hidden withAnimationOnlyOnce:(UIStatusBarAnimation)animation {
+- (void)setStatusBarHidden:(BOOL)hidden withAnimation:(UIStatusBarAnimation)animation {
     _commonConfig.isStatusBarHidden = hidden;
-    UIStatusBarAnimation oldAnimation = _commonConfig.statusBarUpdateAnimation;
-    _commonConfig.statusBarUpdateAnimation = animation;
-//    [self setNeedsStatusBarAppearanceUpdateAnimated:(animation != UIStatusBarAnimationNone) completion:nil];
-    [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:animation];
-    _commonConfig.statusBarUpdateAnimation = oldAnimation;
-}
-
-- (void)setStatusBarHidden:(BOOL)hidden withAnimationForEver:(UIStatusBarAnimation)animation {
-    _commonConfig.isStatusBarHidden = hidden;
-    _commonConfig.statusBarUpdateAnimation = animation;
-//    [self setNeedsStatusBarAppearanceUpdateAnimated:(animation != UIStatusBarAnimationNone) completion:NULL];
     [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:animation];
 }
 
@@ -97,47 +125,102 @@
 
 - (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle animated:(BOOL)animated {
     _commonConfig.statusBarStyle = statusBarStyle;
-    [self setNeedsStatusBarAppearanceUpdateAnimated:animated completion:NULL];
-}
-
-- (void)setNeedsStatusBarAppearanceUpdateAnimated:(BOOL)animated completion:(void (^)(void))completion {
-    [UIView animateWithDuration:animated?0.2f:0.f delay:0.f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [self setNeedsStatusBarAppearanceUpdate];
-    } completion:^(BOOL finished) {
-        if (completion) {
-            completion();
-        }
-    }];
-}
-
-#pragma mark - override UIViewController statusBar config
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return _commonConfig.statusBarStyle;
-}
-
-- (BOOL)prefersStatusBarHidden {
-    return _commonConfig.isStatusBarHidden;
-}
-
-- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
-    return _commonConfig.statusBarUpdateAnimation;
+    [[UIApplication sharedApplication] setStatusBarStyle:statusBarStyle animated:animated];
 }
 
 #pragma mark
-#pragma mark - present && dismiss
-/**
- *  if you present several view controllers in succession, only the top-most view is dismissed in an animated fashion by calling this method.
- *  but in iOS8 self.presentedViewController is dismissed in an animated fashinon.
- *   for example A present B, B present C, C is dismissed without animation.
- *
- */
+#pragma mark - override present && dismiss method
+- (UIViewController *)getTopViewControllerOrSelfFromNavigationController:(UIViewController *)navigation {
+    if ([navigation isKindOfClass:UINavigationController.class]) {
+        return [((UINavigationController *)navigation) topViewController];
+    } else {
+        return navigation;
+    }
+}
+
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
+    UIViewController *topVC = self.presentedViewController ?[self getTopViewControllerOrSelfFromNavigationController:[[self presentedViewControllers] lastObject]]: self;
+    UIViewController *bottomVC = self.presentedViewController ? self :[self getTopViewControllerOrSelfFromNavigationController:self.presentingViewController];
+    
+    BDViewController *fromVC = ChangeToBDViewController(topVC);
+    BDViewController *toVC = ChangeToBDViewController(bottomVC);
+    
+    [fromVC willDismissTo:toVC animated:flag];
+    [toVC willDismissedFrom:fromVC animated:flag];
+    
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        [fromVC didDismissTo:toVC animated:flag];
+        [toVC didDismissedFrom:fromVC animated:flag];
+    }];
+    [self dismissViewControllerDirectlyAnimated:flag completion:completion];
+    [CATransaction commit];
+}
+
+- (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
+    BDViewController *fromVC = nil;
+    BDViewController *toVC = nil;
+    if (viewControllerToPresent && ![[self presentedViewControllers] containsObject:viewControllerToPresent] && self != viewControllerToPresent && self.navigationController != viewControllerToPresent) {
+        fromVC = self;
+        toVC = ChangeToBDViewController([self getTopViewControllerOrSelfFromNavigationController:viewControllerToPresent]);
+    }
+    
+    [fromVC willPresent:toVC animated:flag];
+    [toVC willPresentedBy:fromVC animated:flag];
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        [fromVC didPresent:toVC animated:flag];
+        [toVC didPresentedBy:fromVC animated:flag];
+    }];
+    [self presentViewControllerDirectly:viewControllerToPresent animated:flag completion:completion];
+    [CATransaction commit];
+}
+
+- (void)dismissViewControllerDirectlyAnimated:(BOOL)flag completion:(void (^)(void))completion {
     if (flag && SystemVersionHigherThanOrEqualTo(@"8.0") && ([[self presentedViewControllers] count] > 1)) {
         UIViewController *topPresentedViewController = [[self presentedViewControllers] lastObject];
         UIView *topPresentedView = [topPresentedViewController.view getSnapshotView];
         [self.presentedViewController.view addSubview:topPresentedView];
     }
+    
+    if (BDVCIsPresentAndDismissAnimated) {
+        NSAssert(NO, @"Application tried to dismiss a modal view controller while a presentation or dismiss is in progress!");
+        return;
+    }
+    
+    BDVCIsPresentAndDismissAnimated = YES;
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        BDVCIsPresentAndDismissAnimated = NO;
+    }];
     [super dismissViewControllerAnimated:flag completion:completion];
+    [CATransaction commit];
+}
+
+- (void)presentViewControllerDirectly:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
+    if (viewControllerToPresent == nil) {
+        NSAssert(NO, @"Application tried to present a nil modal view controller on target %@", self);
+        return;
+    }
+    
+    if (BDVCIsPresentAndDismissAnimated) {
+        NSAssert(NO, @"Application tried to present a modal view controller while a presentation or dismiss is in progress!");
+        return;
+    }
+    
+    //if viewControllerToPresent have been presented, return
+    if ([[self presentedViewControllers] containsObject:viewControllerToPresent] || self == viewControllerToPresent || self.navigationController == viewControllerToPresent) {
+        NSAssert(NO, @"Application tried to present modally an active controller %@", viewControllerToPresent);
+        return;
+    }
+    
+    BDVCIsPresentAndDismissAnimated = YES;
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        BDVCIsPresentAndDismissAnimated = NO;
+    }];
+    [super presentViewController:viewControllerToPresent animated:flag completion:completion];
+    [CATransaction commit];
 }
 
 - (NSArray *)presentedViewControllers {
