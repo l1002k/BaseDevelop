@@ -46,10 +46,7 @@
 }
 
 - (void)dismiss:(UIBarButtonItem *)sender {
-//    [self.navigationController popToRootViewControllerAnimated:YES];
-    PushViewController *vc = [PushViewController new];
-    vc.index = 10;
-    [self.navigationController popToViewController:nil animated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

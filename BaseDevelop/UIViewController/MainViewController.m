@@ -39,25 +39,8 @@
 }
 
 - (void)dismiss:(UIBarButtonItem *)sender {
-//    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-//        NSLog(@"test");
-//        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:self.navigationController animated:YES completion:^{
-//            NSLog(@"test");
-//        }];
-//    }];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
-
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//    [[UIApplication sharedApplication]setStatusBarHidden:isHidden withAnimation:animated?UIStatusBarAnimationSlide:UIStatusBarAnimationNone];
-//}
-//
-//- (void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:animated];
-//    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:animated?UIStatusBarAnimationSlide:UIStatusBarAnimationNone];
-//}
 
 - (IBAction)statusBarAction:(id)sender {
 //    if ([UIApplication sharedApplication].statusBarStyle == UIStatusBarStyleLightContent) {

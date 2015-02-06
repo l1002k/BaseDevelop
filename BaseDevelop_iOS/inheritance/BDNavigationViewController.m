@@ -127,7 +127,18 @@
 
 #pragma mark
 #pragma mark - override push & pop method
+- (BOOL)isSupportInteractiveTransition {
+    if ([self.delegate respondsToSelector:@selector(navigationController: animationControllerForOperation:fromViewController:toViewController:)]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if ([self isSupportInteractiveTransition]) {
+        NSLog(@"");
+    }
     BDViewController *fromVC = nil;
     BDViewController *toVC = nil;
     if (viewController && [viewController isKindOfClass:UIViewController.class]) {

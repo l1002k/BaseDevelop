@@ -67,6 +67,8 @@ static BOOL BDVCIsPresentAndDismissAnimated = NO;
 
 - (void)willTransitionedFrom:(BDViewController *)fromViewController actionType:(BDViewControllerTransitionType)type animated:(BOOL)animated {
     [self setStatusBarHidden:_commonConfig.isStatusBarHidden withAnimation:UIStatusBarAnimationFade];
+    
+    
 }
 
 - (void)didTransitionedFrom:(BDViewController *)fromViewController actionType:(BDViewControllerTransitionType)type animated:(BOOL)animated {
@@ -87,19 +89,23 @@ static BOOL BDVCIsPresentAndDismissAnimated = NO;
     UIViewController *topVC = self.presentedViewController ?[self getTopViewControllerOrSelfFromNavigationController:[[self presentedViewControllers] lastObject]]: self;
     UIViewController *bottomVC = self.presentedViewController ? self :[self getTopViewControllerOrSelfFromNavigationController:self.presentingViewController];
     
-    BDViewController *fromVC = ChangeToBDViewController(topVC);
-    BDViewController *toVC = ChangeToBDViewController(bottomVC);
+    BDViewController *fromVC = nil;
+    BDViewController *toVC = nil;
+    if (self.presentedViewController || self.presentingViewController) {
+        fromVC = ChangeToBDViewController(topVC);
+        toVC = ChangeToBDViewController(bottomVC);
+    }
     
     [fromVC willTransitionTo:toVC actionType:BDViewControllerTransitionDismiss animated:flag];
     [toVC willTransitionedFrom:fromVC actionType:BDViewControllerTransitionDismiss animated:flag];
     
-    [CATransaction begin];
-    [CATransaction setCompletionBlock:^{
+    [self dismissViewControllerDirectlyAnimated:flag completion:^{
         [fromVC didTransitionTo:toVC actionType:BDViewControllerTransitionDismiss animated:flag];
         [toVC didTransitionedFrom:fromVC actionType:BDViewControllerTransitionDismiss animated:flag];
+        if (completion) {
+            completion();
+        }
     }];
-    [self dismissViewControllerDirectlyAnimated:flag completion:completion];
-    [CATransaction commit];
 }
 
 - (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
@@ -112,34 +118,38 @@ static BOOL BDVCIsPresentAndDismissAnimated = NO;
     
     [fromVC willTransitionTo:toVC actionType:BDViewControllerTransitionPresent animated:flag];
     [toVC willTransitionedFrom:fromVC actionType:BDViewControllerTransitionPresent animated:flag];
-    [CATransaction begin];
-    [CATransaction setCompletionBlock:^{
+    [self presentViewControllerDirectly:viewControllerToPresent animated:flag completion:^{
         [fromVC didTransitionTo:toVC actionType:BDViewControllerTransitionPresent animated:flag];
         [toVC didTransitionedFrom:fromVC actionType:BDViewControllerTransitionPresent animated:flag];
+        if (completion) {
+            completion();
+        }
     }];
-    [self presentViewControllerDirectly:viewControllerToPresent animated:flag completion:completion];
-    [CATransaction commit];
 }
 
 - (void)dismissViewControllerDirectlyAnimated:(BOOL)flag completion:(void (^)(void))completion {
-    if (flag && SystemVersionHigherThanOrEqualTo(@"8.0") && ([[self presentedViewControllers] count] > 1)) {
-        UIViewController *topPresentedViewController = [[self presentedViewControllers] lastObject];
-        UIView *topPresentedView = [topPresentedViewController.view getSnapshotView];
-        [self.presentedViewController.view addSubview:topPresentedView];
-    }
-    
     if (BDVCIsPresentAndDismissAnimated) {
         NSAssert(NO, @"Application tried to dismiss a modal view controller while a presentation or dismiss is in progress!");
         return;
     }
     
+    if (self.presentingViewController == nil && self.presentedViewController == nil) {
+        NSAssert(NO, @"Application tried to dismiss a modal view controller but this view controller %@ never been presented", self);
+        return;
+    }
+    
     BDVCIsPresentAndDismissAnimated = YES;
-    [CATransaction begin];
-    [CATransaction setCompletionBlock:^{
+    if (flag && SystemVersionHigherThanOrEqualTo(@"8.0") && ([[self presentedViewControllers] count] > 1)) {
+        UIViewController *topPresentedViewController = [[self presentedViewControllers] lastObject];
+        UIView *topPresentedView = [topPresentedViewController.view getSnapshotView];
+        [self.presentedViewController.view addSubview:topPresentedView];
+    }
+    [super dismissViewControllerAnimated:flag completion:^{
         BDVCIsPresentAndDismissAnimated = NO;
+        if (completion) {
+            completion();
+        }
     }];
-    [super dismissViewControllerAnimated:flag completion:completion];
-    [CATransaction commit];
 }
 
 - (void)presentViewControllerDirectly:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
@@ -160,12 +170,12 @@ static BOOL BDVCIsPresentAndDismissAnimated = NO;
     }
     
     BDVCIsPresentAndDismissAnimated = YES;
-    [CATransaction begin];
-    [CATransaction setCompletionBlock:^{
+    [super presentViewController:viewControllerToPresent animated:flag completion:^{
         BDVCIsPresentAndDismissAnimated = NO;
+        if (completion) {
+            completion();
+        }
     }];
-    [super presentViewController:viewControllerToPresent animated:flag completion:completion];
-    [CATransaction commit];
 }
 
 - (NSArray *)presentedViewControllers {
