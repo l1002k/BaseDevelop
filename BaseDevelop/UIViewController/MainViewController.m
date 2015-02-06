@@ -48,16 +48,16 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[UIApplication sharedApplication]setStatusBarHidden:isHidden withAnimation:animated?UIStatusBarAnimationSlide:UIStatusBarAnimationNone];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:animated?UIStatusBarAnimationSlide:UIStatusBarAnimationNone];
-}
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    [[UIApplication sharedApplication]setStatusBarHidden:isHidden withAnimation:animated?UIStatusBarAnimationSlide:UIStatusBarAnimationNone];
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:animated?UIStatusBarAnimationSlide:UIStatusBarAnimationNone];
+//}
 
 - (IBAction)statusBarAction:(id)sender {
 //    if ([UIApplication sharedApplication].statusBarStyle == UIStatusBarStyleLightContent) {
@@ -76,11 +76,11 @@
 
 - (IBAction)presentAction:(id)sender {
     UIViewController *vc = nil;
-//    if (_index != 1) {
-//        MainViewController *mainVC = [MainViewController new];
-//        mainVC.index = _index + 1;
-//        vc = mainVC;
-//    } else
+    if (_index != 1) {
+        MainViewController *mainVC = [MainViewController new];
+        mainVC.index = _index + 1;
+        vc = mainVC;
+    } else
     {
         PresentViewController *present = [PresentViewController new];
         vc = present;

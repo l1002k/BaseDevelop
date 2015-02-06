@@ -35,79 +35,6 @@ static BOOL BDVCIsPresentAndDismissAnimated = NO;
     // Do any additional setup after loading the view.
 }
 
-
-#pragma mark
-#pragma mark - push method
-- (void)willPush:(BDViewController *)pushedViewController animated:(BOOL)animated {
-    
-}
-
-- (void)didPush:(BDViewController *)pushedViewController animated:(BOOL)animated {
-    
-}
-
-- (void)willPushedBy:(BDViewController *)pushingViewController animated:(BOOL)animated {
-    
-}
-
-- (void)didPushedBy:(BDViewController *)pushingViewController animated:(BOOL)animated {
-    
-}
-
-#pragma mark
-#pragma mark - pop method
-- (void)willPopTo:(BDViewController *)pushingViewController animated:(BOOL)animated {
-    
-}
-
-- (void)didPopTo:(BDViewController *)pushingViewController animated:(BOOL)animated {
-    
-}
-
-- (void)willPopFrom:(BDViewController *)pushedViewController animated:(BOOL)animated {
-    
-}
-
-- (void)didPopFrom:(BDViewController *)pushedViewController animated:(BOOL)animated {
-    
-}
-
-#pragma mark
-#pragma mark - present method
-- (void)willPresent:(BDViewController *)presentedViewController animated:(BOOL)animated {
-    
-}
-
-- (void)didPresent:(BDViewController *)presentedViewController animated:(BOOL)animated {
-    
-}
-
-- (void)willPresentedBy:(BDViewController *)presentingViewController animated:(BOOL)animated {
-    
-}
-
-- (void)didPresentedBy:(BDViewController *)presentingViewController animated:(BOOL)animated {
-    
-}
-
-#pragma mark
-#pragma mark - dismiss method
-- (void)willDismissTo:(BDViewController *)presentingViewController animated:(BOOL)animated {
-    
-}
-
-- (void)didDismissTo:(BDViewController *)presentingViewController animated:(BOOL)animated {
-    
-}
-
-- (void)willDismissedFrom:(BDViewController *)dismissedViewController animated:(BOOL)animated {
-    
-}
-
-- (void)didDismissedFrom:(BDViewController *)dismissedViewController animated:(BOOL)animated {
-    
-}
-
 #pragma mark
 #pragma mark - statusBar
 - (void)setStatusBarHidden:(BOOL)hidden {
@@ -129,6 +56,24 @@ static BOOL BDVCIsPresentAndDismissAnimated = NO;
 }
 
 #pragma mark
+#pragma mark - trasition method
+- (void)willTransitionTo:(BDViewController *)toViewController actionType:(BDViewControllerTransitionType)type animated:(BOOL)animated {
+    
+}
+
+- (void)didTransitionTo:(BDViewController *)toViewController actionType:(BDViewControllerTransitionType)type animated:(BOOL)animated {
+    
+}
+
+- (void)willTransitionedFrom:(BDViewController *)fromViewController actionType:(BDViewControllerTransitionType)type animated:(BOOL)animated {
+    [self setStatusBarHidden:_commonConfig.isStatusBarHidden withAnimation:UIStatusBarAnimationFade];
+}
+
+- (void)didTransitionedFrom:(BDViewController *)fromViewController actionType:(BDViewControllerTransitionType)type animated:(BOOL)animated {
+    
+}
+
+#pragma mark
 #pragma mark - override present && dismiss method
 - (UIViewController *)getTopViewControllerOrSelfFromNavigationController:(UIViewController *)navigation {
     if ([navigation isKindOfClass:UINavigationController.class]) {
@@ -145,13 +90,13 @@ static BOOL BDVCIsPresentAndDismissAnimated = NO;
     BDViewController *fromVC = ChangeToBDViewController(topVC);
     BDViewController *toVC = ChangeToBDViewController(bottomVC);
     
-    [fromVC willDismissTo:toVC animated:flag];
-    [toVC willDismissedFrom:fromVC animated:flag];
+    [fromVC willTransitionTo:toVC actionType:BDViewControllerTransitionDismiss animated:flag];
+    [toVC willTransitionedFrom:fromVC actionType:BDViewControllerTransitionDismiss animated:flag];
     
     [CATransaction begin];
     [CATransaction setCompletionBlock:^{
-        [fromVC didDismissTo:toVC animated:flag];
-        [toVC didDismissedFrom:fromVC animated:flag];
+        [fromVC didTransitionTo:toVC actionType:BDViewControllerTransitionDismiss animated:flag];
+        [toVC didTransitionedFrom:fromVC actionType:BDViewControllerTransitionDismiss animated:flag];
     }];
     [self dismissViewControllerDirectlyAnimated:flag completion:completion];
     [CATransaction commit];
@@ -165,12 +110,12 @@ static BOOL BDVCIsPresentAndDismissAnimated = NO;
         toVC = ChangeToBDViewController([self getTopViewControllerOrSelfFromNavigationController:viewControllerToPresent]);
     }
     
-    [fromVC willPresent:toVC animated:flag];
-    [toVC willPresentedBy:fromVC animated:flag];
+    [fromVC willTransitionTo:toVC actionType:BDViewControllerTransitionPresent animated:flag];
+    [toVC willTransitionedFrom:fromVC actionType:BDViewControllerTransitionPresent animated:flag];
     [CATransaction begin];
     [CATransaction setCompletionBlock:^{
-        [fromVC didPresent:toVC animated:flag];
-        [toVC didPresentedBy:fromVC animated:flag];
+        [fromVC didTransitionTo:toVC actionType:BDViewControllerTransitionPresent animated:flag];
+        [toVC didTransitionedFrom:fromVC actionType:BDViewControllerTransitionPresent animated:flag];
     }];
     [self presentViewControllerDirectly:viewControllerToPresent animated:flag completion:completion];
     [CATransaction commit];
