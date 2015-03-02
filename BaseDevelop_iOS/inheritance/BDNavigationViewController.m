@@ -18,16 +18,6 @@
 
 @implementation BDNavigationViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark
 #pragma mark - override dismiss & present method
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
