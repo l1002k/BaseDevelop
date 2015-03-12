@@ -17,11 +17,11 @@
     }
 }
 
-- (UIView*)descendantOrSelfWithClass:(Class)aClass {
+- (id)descendantOrSelfWithClass:(Class)aClass {
     if ([self isKindOfClass:aClass]) {
         return self;
     }
-    
+
     for (UIView* child in self.subviews) {
         UIView* result = [child descendantOrSelfWithClass:aClass];
         if (result)
@@ -31,7 +31,7 @@
     return nil;
 }
 
-- (UIView*)ancestorOrSelfWithClass:(Class)aClass {
+- (id)ancestorOrSelfWithClass:(Class)aClass {
     if ([self isKindOfClass:aClass]) {
         return self;
     } else if (self.superview) {

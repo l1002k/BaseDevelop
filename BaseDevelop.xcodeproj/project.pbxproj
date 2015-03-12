@@ -148,6 +148,7 @@
 		E64B5A531A7F617500568B67 /* BaseDevelop */ = {
 			isa = PBXGroup;
 			children = (
+				E65938071AA03B7900869E8A /* shimmering */,
 				E69DCECE1A80A5CE0002712D /* UIViewController */,
 				E64B5A581A7F617500568B67 /* AppDelegate.h */,
 				E64B5A591A7F617500568B67 /* AppDelegate.m */,
@@ -208,6 +209,13 @@
 				E69DCED41A80B7060002712D /* category */,
 			);
 			path = BaseDevelop_iOS;
+			sourceTree = "<group>";
+		};
+		E65938071AA03B7900869E8A /* shimmering */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = shimmering;
 			sourceTree = "<group>";
 		};
 		E69DCECE1A80A5CE0002712D /* UIViewController */ = {

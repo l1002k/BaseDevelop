@@ -18,12 +18,12 @@
 /**
  * Finds the first descendant view (including this view) that is a kind of that class
  */
-- (UIView*)descendantOrSelfWithClass:(Class)aClass;
+- (id)descendantOrSelfWithClass:(Class)aClass;
 
 /**
  * Finds the first ancestor view (including this view) that is a kind of that class
  */
-- (UIView*)ancestorOrSelfWithClass:(Class)aClass;
+- (id)ancestorOrSelfWithClass:(Class)aClass;
 
 /**
  *  return a snapshot image for this view
