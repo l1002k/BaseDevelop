@@ -39,14 +39,6 @@
     btn.backgroundColor = [UIColor magentaColor];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
 - (void)btnAction:(id)sender {
     PushViewController *push = [[PushViewController alloc]init];
     push.index = _index + 1;

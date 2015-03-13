@@ -33,6 +33,27 @@ static BOOL BDVCIsPresentAndDismissAnimated = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"%@ viewDidLoad",NSStringFromClass(self.class));
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"%@ viewWillAppear: %@",NSStringFromClass(self.class), @(animated));
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSLog(@"%@ viewDidAppear: %@",NSStringFromClass(self.class), @(animated));
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"%@ viewWillDisappear: %@",NSStringFromClass(self.class), @(animated));
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    NSLog(@"%@ viewDidDisappear: %@",NSStringFromClass(self.class), @(animated));
 }
 
 #pragma mark
