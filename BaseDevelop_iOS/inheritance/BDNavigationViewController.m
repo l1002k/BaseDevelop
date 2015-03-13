@@ -144,17 +144,23 @@
         fromVC = ChangeToBDViewController(self.topViewController);
         toVC = ChangeToBDViewController(self.viewControllers[self.viewControllers.count - 2]);
     }
-    
     [fromVC willTransitionTo:toVC actionType:BDViewControllerTransitionPop animated:animated];
     [toVC willTransitionedFrom:fromVC actionType:BDViewControllerTransitionPop animated:animated];
-    
-    [CATransaction begin];
     UIViewController *fromViewController = [self popViewControllerDirectlyAnimated:animated];
-    [CATransaction setCompletionBlock:^{
-        [fromVC didTransitionTo:toVC actionType:BDViewControllerTransitionPop animated:animated];
-        [toVC didTransitionedFrom:fromVC actionType:BDViewControllerTransitionPop animated:animated];
+    [self.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        [fromVC willTransitionTo:toVC actionType:BDViewControllerTransitionPop animated:animated];
+        [toVC willTransitionedFrom:fromVC actionType:BDViewControllerTransitionPop animated:animated];
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        if ([context isCancelled]) {
+            [toVC willTransitionTo:fromVC actionType:BDViewControllerTransitionPopCancelled animated:animated];
+            [toVC didTransitionTo:fromVC actionType:BDViewControllerTransitionPopCancelled animated:animated];
+            [fromVC willTransitionedFrom:toVC actionType:BDViewControllerTransitionPopCancelled animated:animated];
+            [fromVC didTransitionedFrom:toVC actionType:BDViewControllerTransitionPopCancelled animated:animated];
+        }else {
+            [fromVC didTransitionTo:toVC actionType:BDViewControllerTransitionPop animated:animated];
+            [toVC didTransitionedFrom:fromVC actionType:BDViewControllerTransitionPop animated:animated];
+        }
     }];
-    [CATransaction commit];
     return fromViewController;
 }
 

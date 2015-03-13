@@ -13,6 +13,7 @@
 typedef enum {
     BDViewControllerTransitionPush,
     BDViewControllerTransitionPop,
+    BDViewControllerTransitionPopCancelled,
     BDViewControllerTransitionPresent,
     BDViewControllerTransitionDismiss
 } BDViewControllerTransitionType;
