@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E614278A1AB6DFA2000ECA44 /* BDNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = E61427881AB6DFA2000ECA44 /* BDNavigationBar.h */; };
+		E614278B1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E61427891AB6DFA2000ECA44 /* BDNavigationBar.m */; };
+		E614278C1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E61427891AB6DFA2000ECA44 /* BDNavigationBar.m */; };
 		E64B5A571A7F617500568B67 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A561A7F617500568B67 /* main.m */; };
 		E64B5A5A1A7F617500568B67 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A591A7F617500568B67 /* AppDelegate.m */; };
 		E64B5A5C1A7F617500568B67 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E64B5A5B1A7F617500568B67 /* Images.xcassets */; };
@@ -47,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E61427881AB6DFA2000ECA44 /* BDNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDNavigationBar.h; sourceTree = "<group>"; };
+		E61427891AB6DFA2000ECA44 /* BDNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDNavigationBar.m; sourceTree = "<group>"; };
 		E64B5A511A7F617500568B67 /* BaseDevelop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseDevelop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64B5A551A7F617500568B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E64B5A561A7F617500568B67 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -217,6 +222,8 @@
 				E69DCEE21A80B7930002712D /* BDViewController.m */,
 				E69DCF931A83009A0002712D /* BDNavigationViewController.h */,
 				E69DCF941A83009A0002712D /* BDNavigationViewController.m */,
+				E61427881AB6DFA2000ECA44 /* BDNavigationBar.h */,
+				E61427891AB6DFA2000ECA44 /* BDNavigationBar.m */,
 			);
 			path = inheritance;
 			sourceTree = "<group>";
@@ -250,6 +257,7 @@
 				E69DCEE81A80CE310002712D /* BDCommonUtil.h in Headers */,
 				E69DCF951A83009A0002712D /* BDNavigationViewController.h in Headers */,
 				E69DCEDD1A80B7060002712D /* UIView+Util.h in Headers */,
+				E614278A1AB6DFA2000ECA44 /* BDNavigationBar.h in Headers */,
 				E69DCEE31A80B7930002712D /* BDViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E69DCEE41A80B7930002712D /* BDViewController.m in Sources */,
+				E614278B1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */,
 				E69DCEDE1A80B7060002712D /* UIView+Util.m in Sources */,
 				E69DCEDB1A80B7060002712D /* UIView+FrameAdditions.m in Sources */,
 				E69DCF851A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */,
@@ -405,6 +414,7 @@
 				E69DCEE51A80B7930002712D /* BDViewController.m in Sources */,
 				E69DCF861A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */,
 				E69DCEDF1A80B7060002712D /* UIView+Util.m in Sources */,
+				E614278C1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */,
 				E69DCF971A83009A0002712D /* BDNavigationViewController.m in Sources */,
 				E69DCEDC1A80B7060002712D /* UIView+FrameAdditions.m in Sources */,
 			);

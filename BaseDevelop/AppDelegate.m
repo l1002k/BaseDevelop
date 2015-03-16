@@ -23,7 +23,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     MainViewController *mainVC = [[MainViewController alloc]init];
-    BDNavigationViewController *navi = [[BDNavigationViewController alloc]initWithRootViewController:mainVC];
+    BDNavigationViewController *navi = [[BDNavigationViewController alloc]initWithNavigationBarClass:NSClassFromString(@"BDNavigationBar") toolbarClass:Nil];
+    [navi pushViewController:mainVC animated:NO];
     self.window.rootViewController = navi;
     
     [self.window makeKeyAndVisible];
