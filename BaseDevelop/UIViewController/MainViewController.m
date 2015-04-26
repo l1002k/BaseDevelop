@@ -12,6 +12,41 @@
 #import "PushViewController.h"
 #import "PresentViewController.h"
 #import "BDNavigationViewController.h"
+#import "NSObject+RunTimePragram.h"
+
+@interface myObject : NSObject
+- (void)swizzle;
+@end
+
+@implementation myObject
+
++ (void)test {
+    NSLog(@"test");
+}
+
++ (void)test1 {
+    NSLog(@"test1");
+}
+
+- (void)test2 {
+    NSLog(@"test2");
+}
+
+- (void)test3 {
+    NSLog(@"test3");
+}
+
+- (void)swizzle {
+    [self.class swizzleClassMethod:@selector(test) to:@selector(test1)];
+    [self.class test];
+    [self.class test1];
+    [self swizzleInstanceMethod:@selector(test2) to:@selector(test3)];
+    [self test2];
+    [self test3];
+}
+
+@end
+
 
 @interface MainViewController ()
 {
@@ -36,6 +71,12 @@
     }
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss:)];
     self.title = [NSString stringWithFormat:@"main view controller %d",_index];
+    
+    myObject *object = [myObject new];
+    [object swizzle];
+}
+
+- (void)test {
 }
 
 - (void)dismiss:(UIBarButtonItem *)sender {

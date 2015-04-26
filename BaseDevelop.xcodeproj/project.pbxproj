@@ -10,6 +10,9 @@
 		E614278A1AB6DFA2000ECA44 /* BDNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = E61427881AB6DFA2000ECA44 /* BDNavigationBar.h */; };
 		E614278B1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E61427891AB6DFA2000ECA44 /* BDNavigationBar.m */; };
 		E614278C1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E61427891AB6DFA2000ECA44 /* BDNavigationBar.m */; };
+		E63F3A8C1AECE3F400EC371B /* NSObject+RunTimePragram.h in Headers */ = {isa = PBXBuildFile; fileRef = E63F3A8A1AECE3F400EC371B /* NSObject+RunTimePragram.h */; };
+		E63F3A8D1AECE3F400EC371B /* NSObject+RunTimePragram.m in Sources */ = {isa = PBXBuildFile; fileRef = E63F3A8B1AECE3F400EC371B /* NSObject+RunTimePragram.m */; };
+		E63F3A8E1AECE3F400EC371B /* NSObject+RunTimePragram.m in Sources */ = {isa = PBXBuildFile; fileRef = E63F3A8B1AECE3F400EC371B /* NSObject+RunTimePragram.m */; };
 		E64B5A571A7F617500568B67 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A561A7F617500568B67 /* main.m */; };
 		E64B5A5A1A7F617500568B67 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E64B5A591A7F617500568B67 /* AppDelegate.m */; };
 		E64B5A5C1A7F617500568B67 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E64B5A5B1A7F617500568B67 /* Images.xcassets */; };
@@ -52,6 +55,8 @@
 /* Begin PBXFileReference section */
 		E61427881AB6DFA2000ECA44 /* BDNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDNavigationBar.h; sourceTree = "<group>"; };
 		E61427891AB6DFA2000ECA44 /* BDNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDNavigationBar.m; sourceTree = "<group>"; };
+		E63F3A8A1AECE3F400EC371B /* NSObject+RunTimePragram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+RunTimePragram.h"; sourceTree = "<group>"; };
+		E63F3A8B1AECE3F400EC371B /* NSObject+RunTimePragram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RunTimePragram.m"; sourceTree = "<group>"; };
 		E64B5A511A7F617500568B67 /* BaseDevelop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseDevelop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64B5A551A7F617500568B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E64B5A561A7F617500568B67 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -110,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E63F3A891AECE35000EC371B /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				E63F3A8A1AECE3F400EC371B /* NSObject+RunTimePragram.h */,
+				E63F3A8B1AECE3F400EC371B /* NSObject+RunTimePragram.m */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
 		E64B5A481A7F617500568B67 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +186,7 @@
 		E64B5A8F1A7F649B00568B67 /* BaseDevelop_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E6D257101AE6508200D995CB /* Method-Invocation Observing  */,
 				E69DCEE61A80C3E80002712D /* util */,
 				E69DCEE01A80B7790002712D /* inheritance */,
 				E69DCED41A80B7060002712D /* category */,
@@ -198,6 +213,7 @@
 		E69DCED41A80B7060002712D /* category */ = {
 			isa = PBXGroup;
 			children = (
+				E63F3A891AECE35000EC371B /* NSObject */,
 				E69DCED51A80B7060002712D /* UIView */,
 			);
 			path = category;
@@ -245,6 +261,13 @@
 			path = BDViewController;
 			sourceTree = "<group>";
 		};
+		E6D257101AE6508200D995CB /* Method-Invocation Observing  */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Method-Invocation Observing ";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -252,6 +275,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E63F3A8C1AECE3F400EC371B /* NSObject+RunTimePragram.h in Headers */,
 				E69DCEDA1A80B7060002712D /* UIView+FrameAdditions.h in Headers */,
 				E69DCF841A81BDFB0002712D /* BDViewControllerCommonConfig.h in Headers */,
 				E69DCEE81A80CE310002712D /* BDCommonUtil.h in Headers */,
@@ -394,6 +418,7 @@
 				E64B5A571A7F617500568B67 /* main.m in Sources */,
 				E69DCF8C1A81FF350002712D /* PushViewController.m in Sources */,
 				E69DCED21A80A5CE0002712D /* MainViewController.m in Sources */,
+				E63F3A8D1AECE3F400EC371B /* NSObject+RunTimePragram.m in Sources */,
 				E69DCF961A83009A0002712D /* BDNavigationViewController.m in Sources */,
 				E69DCF911A81FFD20002712D /* PresentViewController.m in Sources */,
 			);
@@ -416,6 +441,7 @@
 				E69DCEDF1A80B7060002712D /* UIView+Util.m in Sources */,
 				E614278C1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */,
 				E69DCF971A83009A0002712D /* BDNavigationViewController.m in Sources */,
+				E63F3A8E1AECE3F400EC371B /* NSObject+RunTimePragram.m in Sources */,
 				E69DCEDC1A80B7060002712D /* UIView+FrameAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,6 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				INFOPLIST_FILE = BaseDevelop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -537,6 +564,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				INFOPLIST_FILE = BaseDevelop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -22,4 +22,7 @@
 #define SystemVersionlowerThanOrEqualTo(version) ([[[UIDevice currentDevice] systemVersion] compare:version options:NSNumericSearch] != NSOrderedDescending)
 //-------------------- system version end --------------------------//
 
+//-------------------- block call ----------------------------------//
+#define SafeBlockCall(block, ...) (block ? block(__VA_ARGS__) : nil)
+//-------------------- block call end ------------------------------//
 #endif
