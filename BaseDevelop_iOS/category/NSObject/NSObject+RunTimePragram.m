@@ -23,13 +23,15 @@ void methodSwizzle(Class c, SEL origSEL, SEL overrideSEL, bool isInstanceMethod)
     IMP orig = method_getImplementation(origMethod);
     IMP override = method_getImplementation(overrideMethod);
     
-    void(* method)(id, SEL) =(void *) orig;
-    method(c, origSEL);
-    
-    method = (void *)override;
-    method(c, overrideSEL);
+    orig = imp_implementationWithBlock(^(id _self, SEL _sel, NSString * string){
+        NSLog(@"leikun");
+    });
+    void(* method)(id, SEL, NSString *) = (void *)orig;
+    method(c, origSEL, @"test");
     
     if (class_addMethod(c, origSEL, method_getImplementation(overrideMethod), method_getTypeEncoding(overrideMethod))) {
+        method = (void *)class_getMethodImplementation(c, origSEL);
+//        method(c, origSEL);
        class_replaceMethod(c, overrideSEL, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
     } else {
         method_exchangeImplementations(origMethod, overrideMethod);

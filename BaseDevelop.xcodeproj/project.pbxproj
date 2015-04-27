@@ -124,6 +124,13 @@
 			path = NSObject;
 			sourceTree = "<group>";
 		};
+		E63F3AA31AEE1BBD00EC371B /* third_party */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = third_party;
+			sourceTree = "<group>";
+		};
 		E64B5A481A7F617500568B67 = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +193,7 @@
 		E64B5A8F1A7F649B00568B67 /* BaseDevelop_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E63F3AA31AEE1BBD00EC371B /* third_party */,
 				E6D257101AE6508200D995CB /* Method-Invocation Observing  */,
 				E69DCEE61A80C3E80002712D /* util */,
 				E69DCEE01A80B7790002712D /* inheritance */,
@@ -609,6 +617,7 @@
 		E64B5A8A1A7F63DA00568B67 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -622,6 +631,7 @@
 		E64B5A8B1A7F63DA00568B67 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
