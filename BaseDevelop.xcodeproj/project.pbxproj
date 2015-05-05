@@ -40,6 +40,9 @@
 		E69DCF951A83009A0002712D /* BDNavigationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCF931A83009A0002712D /* BDNavigationViewController.h */; };
 		E69DCF961A83009A0002712D /* BDNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF941A83009A0002712D /* BDNavigationViewController.m */; };
 		E69DCF971A83009A0002712D /* BDNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF941A83009A0002712D /* BDNavigationViewController.m */; };
+		E6A6F93B1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.h in Headers */ = {isa = PBXBuildFile; fileRef = E6A6F9391AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.h */; };
+		E6A6F93C1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A6F93A1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.m */; };
+		E6A6F93D1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A6F93A1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +91,8 @@
 		E69DCF901A81FFD20002712D /* PresentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentViewController.xib; sourceTree = "<group>"; };
 		E69DCF931A83009A0002712D /* BDNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDNavigationViewController.h; sourceTree = "<group>"; };
 		E69DCF941A83009A0002712D /* BDNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDNavigationViewController.m; sourceTree = "<group>"; };
+		E6A6F9391AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MethodInvocationObserving.h"; sourceTree = "<group>"; };
+		E6A6F93A1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodInvocationObserving.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +277,8 @@
 		E6D257101AE6508200D995CB /* Method-Invocation Observing  */ = {
 			isa = PBXGroup;
 			children = (
+				E6A6F9391AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.h */,
+				E6A6F93A1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.m */,
 			);
 			path = "Method-Invocation Observing ";
 			sourceTree = "<group>";
@@ -286,6 +293,7 @@
 				E63F3A8C1AECE3F400EC371B /* NSObject+RunTimePragram.h in Headers */,
 				E69DCEDA1A80B7060002712D /* UIView+FrameAdditions.h in Headers */,
 				E69DCF841A81BDFB0002712D /* BDViewControllerCommonConfig.h in Headers */,
+				E6A6F93B1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.h in Headers */,
 				E69DCEE81A80CE310002712D /* BDCommonUtil.h in Headers */,
 				E69DCF951A83009A0002712D /* BDNavigationViewController.h in Headers */,
 				E69DCEDD1A80B7060002712D /* UIView+Util.h in Headers */,
@@ -417,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6A6F93C1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.m in Sources */,
 				E69DCEE41A80B7930002712D /* BDViewController.m in Sources */,
 				E614278B1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */,
 				E69DCEDE1A80B7060002712D /* UIView+Util.m in Sources */,
@@ -448,6 +457,7 @@
 				E69DCF861A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */,
 				E69DCEDF1A80B7060002712D /* UIView+Util.m in Sources */,
 				E614278C1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */,
+				E6A6F93D1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.m in Sources */,
 				E69DCF971A83009A0002712D /* BDNavigationViewController.m in Sources */,
 				E63F3A8E1AECE3F400EC371B /* NSObject+RunTimePragram.m in Sources */,
 				E69DCEDC1A80B7060002712D /* UIView+FrameAdditions.m in Sources */,

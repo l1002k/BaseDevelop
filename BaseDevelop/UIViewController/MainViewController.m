@@ -12,41 +12,35 @@
 #import "PushViewController.h"
 #import "PresentViewController.h"
 #import "BDNavigationViewController.h"
-#import "NSObject+RunTimePragram.h"
+#import <objc/runtime.h>
 
 @interface myObject : NSObject
-- (void)swizzle;
+- (void)test;
+
 @end
 
 @implementation myObject
 
-+ (void)test {
-    NSLog(@"test");
-}
-
-+ (void)test1 {
-    NSLog(@"test1");
-}
-
-- (void)test2 {
-    NSLog(@"test2");
-}
-
-- (void)test3 {
-    NSLog(@"test3");
-}
-
-- (void)swizzle {
-    [self.class swizzleClassMethod:@selector(test) to:@selector(test1)];
-    [self.class test];
-    [self.class test1];
-    [self swizzleInstanceMethod:@selector(test2) to:@selector(test3)];
-    [self test2];
-    [self test3];
+- (void)test
+{
+    NSLog(@"myObject");
 }
 
 @end
 
+@interface myObject1 : NSObject
+- (void)test;
+
+@end
+
+@implementation myObject1
+
+- (void)test
+{
+    NSLog(@"myObject1");
+}
+
+@end
 
 @interface MainViewController ()
 {
@@ -73,13 +67,22 @@
     self.title = [NSString stringWithFormat:@"main view controller %d",_index];
     
     myObject *object = [myObject new];
-    [object swizzle];
-}
-
-- (void)test {
+    
+    
+//    const char *subclassName = [@"test_MainViewController" UTF8String];
+    Class a = NSClassFromString(@"myObject1");
+    object_setClass(object, a);
+    
+    if ([object respondsToSelector:@selector(test)]) {
+        NSLog(@"");
+        [object test];
+    }
+    Class b = object.class;
+    Class c = object_getClass(object);
 }
 
 - (void)dismiss:(UIBarButtonItem *)sender {
+    return;
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
