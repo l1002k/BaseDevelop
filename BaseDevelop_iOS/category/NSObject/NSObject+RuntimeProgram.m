@@ -24,6 +24,26 @@ static void runtimeProgram_performBlockWithLock(dispatch_block_t block) {
     OSSpinLockUnlock(&aspect_lock);
 }
 
+//这个方法用传入的IMP去替换已经存在的SEL的实现，如果SEL存在，返回替换前的IMP；否则返回NULL
+static IMP runtimeProgram_replaceMethodToIMP(Class c, SEL selector, IMP overrideIMP) {
+    IMP imp = NULL;
+    if (overrideIMP) {
+        if (class_respondsToSelector(c, selector)) {
+            Method method = class_getInstanceMethod(c, selector);
+            imp = method_getImplementation(method);
+            const char *encoding = method_getTypeEncoding(method);
+            //如果selector是c的super class实现的，class_replaceMethod返回NULL
+            class_replaceMethod(c, selector, overrideIMP, encoding);
+        } else {
+            BOOL isMetaClass = class_isMetaClass(c);
+            NSCAssert(NO, @"请检查%@:%@是否存在",isMetaClass?@"类方法":@"对象方法", NSStringFromSelector(selector));
+        }
+    } else {
+        NSCAssert(overrideIMP, @"overrideIMP不能为空");
+    }
+    return imp;
+}
+
 #pragma mark
 #pragma mark - 方法删除
 //检查IMP是否是forward的函数
@@ -63,26 +83,18 @@ static IMP runtimeProgram_getMessageForwardIMP(Class c, SEL selector) {
     return msgForwardIMP;
 }
 
-//把selector的方法实现替换成_objc_msgForward或者_objc_msgForward_stret，这样再调用该方法都会走消息转发流程,注意传入的class,类方法请传meta class
+//把selector的方法实现替换成_objc_msgForward或者_objc_msgForward_stret，这样再调用该方法都会走消息转发流程,注意传入的class,类方法请传meta class。如果已替换成消息转发或者seletor不存在，则返回NULL；否则返回selector替换前的方法实现
 static IMP runtimeProgram_replaceMethodToForward(Class c, SEL selector) {
-    if (class_respondsToSelector(c, selector)) {
-        __block IMP imp = NULL;
-        runtimeProgram_performBlockWithLock(^{
-            Method method = class_getInstanceMethod(c, selector);
-            imp = method_getImplementation(method);
-            const char *encoding = method_getTypeEncoding(method);
-            if (!runtimeProgram_isMessageForwardIMP(imp)) {
-               class_replaceMethod(c, selector, runtimeProgram_getMessageForwardIMP(c, selector), encoding);
-            }
-        });
-        return imp;
-    } else {
-        BOOL isMetaClass = class_isMetaClass(c);
-        NSCAssert(NO, @"请检查%@:%@是否存在",isMetaClass?@"类方法":@"对象方法", NSStringFromSelector(selector));
-        return NULL;
-    }
+    __block IMP result = NULL;
+    runtimeProgram_performBlockWithLock(^{
+        Method method = class_getInstanceMethod(c, selector);
+        IMP imp = method_getImplementation(method);
+        if (!runtimeProgram_isMessageForwardIMP(imp)) {
+            result = runtimeProgram_replaceMethodToIMP(c, selector, runtimeProgram_getMessageForwardIMP(c, selector));
+        }
+    });
+    return result;
 }
-
 
 - (IMP)replaceInstanceMethodToForward:(SEL)selector {
     return runtimeProgram_replaceMethodToForward(self.class, selector);
@@ -96,18 +108,13 @@ static IMP runtimeProgram_replaceMethodToForward(Class c, SEL selector) {
 #pragma mark - 方法混淆
 static void runtimeProgram_methodSwizzle(Class c, SEL origSEL, SEL overrideSEL) {
     runtimeProgram_performBlockWithLock(^{
-        Method origMethod = class_getInstanceMethod(c, origSEL);
         Method overrideMethod = class_getInstanceMethod(c, overrideSEL);
-        if (origMethod == NULL || overrideMethod == NULL) {
-            BOOL isMetaClass = class_isMetaClass(c);
-            NSCAssert(origMethod != NULL, @"请检查%@:%@是否存在", isMetaClass?@"类方法":@"对象方法", NSStringFromSelector(origSEL));
-            NSCAssert(overrideMethod != NULL, @"请检查%@:%@是否存在",isMetaClass?@"类方法":@"对象方法", NSStringFromSelector(overrideSEL));
-            return ;
-        }
-        if (class_addMethod(c, origSEL, method_getImplementation(overrideMethod), method_getTypeEncoding(overrideMethod))) {
-            class_replaceMethod(c, overrideSEL, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+        if (overrideMethod) {
+            IMP origIMP = runtimeProgram_replaceMethodToIMP(c, origSEL, method_getImplementation(overrideMethod));
+            runtimeProgram_replaceMethodToIMP(c, overrideSEL, origIMP);
         } else {
-            method_exchangeImplementations(origMethod, overrideMethod);
+            BOOL isMetaClass = class_isMetaClass(c);
+            NSCAssert(overrideMethod != NULL, @"请检查%@:%@是否存在",isMetaClass?@"类方法":@"对象方法", NSStringFromSelector(overrideSEL));
         }
     });
 }
