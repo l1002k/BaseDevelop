@@ -14,6 +14,8 @@
 
 @implementation NSObject (RuntimeProgram)
 
+#pragma mark
+#pragma mark - 公用方法
 //保证线程安全
 static void runtimeProgram_performBlockWithLock(dispatch_block_t block) {
     static OSSpinLock aspect_lock = OS_SPINLOCK_INIT;
@@ -22,6 +24,8 @@ static void runtimeProgram_performBlockWithLock(dispatch_block_t block) {
     OSSpinLockUnlock(&aspect_lock);
 }
 
+#pragma mark
+#pragma mark - 方法删除
 //检查IMP是否是forward的函数
 static BOOL runtimeProgram_isMessageForwardIMP(IMP implementation) {
     return implementation == _objc_msgForward
@@ -65,10 +69,9 @@ static IMP runtimeProgram_replaceMethodToForward(Class c, SEL selector) {
         __block IMP imp = NULL;
         runtimeProgram_performBlockWithLock(^{
             Method method = class_getInstanceMethod(c, selector);
-            imp = method_getImplementation(method);
             const char *encoding = method_getTypeEncoding(method);
             if (!runtimeProgram_isMessageForwardIMP(imp)) {
-                class_replaceMethod(c, selector, runtimeProgram_getMessageForwardIMP(c, selector), encoding);
+               imp = class_replaceMethod(c, selector, runtimeProgram_getMessageForwardIMP(c, selector), encoding);
             }
         });
         return imp;
@@ -79,6 +82,17 @@ static IMP runtimeProgram_replaceMethodToForward(Class c, SEL selector) {
     }
 }
 
+
+- (IMP)replaceInstanceMethodToForward:(SEL)selector {
+    return runtimeProgram_replaceMethodToForward(self.class, selector);
+}
+
++ (IMP)replaceClassMethodToForward:(SEL)selector {
+    return runtimeProgram_replaceMethodToForward(object_getClass(self.class), selector);
+}
+
+#pragma mark
+#pragma mark - 方法混淆
 static void runtimeProgram_methodSwizzle(Class c, SEL origSEL, SEL overrideSEL) {
     runtimeProgram_performBlockWithLock(^{
         Method origMethod = class_getInstanceMethod(c, origSEL);
@@ -105,12 +119,7 @@ static void runtimeProgram_methodSwizzle(Class c, SEL origSEL, SEL overrideSEL) 
     runtimeProgram_methodSwizzle(object_getClass(self.class), origSEL, overrideSEL);
 }
 
-- (IMP)replaceInstanceMethodToForward:(SEL)selector {
-    return runtimeProgram_replaceMethodToForward(self.class, selector);
-}
-
-+ (IMP)replaceClassMethodToForward:(SEL)selector {
-    return runtimeProgram_replaceMethodToForward(object_getClass(self.class), selector);
-}
+#pragma mark
+#pragma mark - class混淆
 
 @end
