@@ -105,12 +105,12 @@ static void runtimeProgram_methodSwizzle(Class c, SEL origSEL, SEL overrideSEL) 
     runtimeProgram_methodSwizzle(object_getClass(self.class), origSEL, overrideSEL);
 }
 
-- (void)replaceInstanceMethodToForward:(SEL)selector {
-    runtimeProgram_replaceMethodToForward(self.class, selector);
+- (IMP)replaceInstanceMethodToForward:(SEL)selector {
+    return runtimeProgram_replaceMethodToForward(self.class, selector);
 }
 
-+ (void)replaceClassMethodToForward:(SEL)selector {
-    runtimeProgram_replaceMethodToForward(object_getClass(self.class), selector);
++ (IMP)replaceClassMethodToForward:(SEL)selector {
+    return runtimeProgram_replaceMethodToForward(object_getClass(self.class), selector);
 }
 
 @end

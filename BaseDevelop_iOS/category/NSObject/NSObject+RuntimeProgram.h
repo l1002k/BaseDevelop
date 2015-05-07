@@ -16,8 +16,8 @@
 
 /**************************************/
 /*下面2个方法是通过运行时删除方法实现，慎用！*/
-- (void)replaceInstanceMethodToForward:(SEL)selector;
-+ (void)replaceClassMethodToForward:(SEL)selector;
+- (IMP)replaceInstanceMethodToForward:(SEL)selector;
++ (IMP)replaceClassMethodToForward:(SEL)selector;
 /**************************************/
 
 @end
