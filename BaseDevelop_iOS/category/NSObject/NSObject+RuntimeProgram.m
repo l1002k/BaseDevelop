@@ -69,9 +69,10 @@ static IMP runtimeProgram_replaceMethodToForward(Class c, SEL selector) {
         __block IMP imp = NULL;
         runtimeProgram_performBlockWithLock(^{
             Method method = class_getInstanceMethod(c, selector);
+            imp = method_getImplementation(method);
             const char *encoding = method_getTypeEncoding(method);
             if (!runtimeProgram_isMessageForwardIMP(imp)) {
-               imp = class_replaceMethod(c, selector, runtimeProgram_getMessageForwardIMP(c, selector), encoding);
+               class_replaceMethod(c, selector, runtimeProgram_getMessageForwardIMP(c, selector), encoding);
             }
         });
         return imp;
