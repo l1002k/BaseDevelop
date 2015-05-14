@@ -37,4 +37,9 @@
  */
 - (UIView *)getSnapshotView;
 
+/**
+ * return the color of the pixel of this view.
+ */
+- (UIColor *)colorOfPoint:(CGPoint)point;
+
 @end
