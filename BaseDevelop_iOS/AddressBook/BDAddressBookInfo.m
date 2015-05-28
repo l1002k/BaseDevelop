@@ -26,7 +26,6 @@
         _firstNamePhonetic = [self readSingleValueFromRecord:record propertyID:kABPersonFirstNamePhoneticProperty];
         _lastNamePhonetic = [self readSingleValueFromRecord:record propertyID:kABPersonLastNamePhoneticProperty];
         _middleNamePhonetic = [self readSingleValueFromRecord:record propertyID:kABPersonMiddleNamePhoneticProperty];
-        _birthday = [self readSingleValueFromRecord:record propertyID:kABPersonBirthdayProperty];
         
         _organiztion = [self readSingleValueFromRecord:record propertyID:kABPersonOrganizationProperty];
         _jobTitle = [self readSingleValueFromRecord:record propertyID:kABPersonJobTitleProperty];
@@ -35,6 +34,8 @@
         _note = [self readSingleValueFromRecord:record propertyID:kABPersonNoteProperty];
         _creationDate = [self readSingleValueFromRecord:record propertyID:kABPersonCreationDateProperty];
         _modificationDate = [self readSingleValueFromRecord:record propertyID:kABPersonModificationDateProperty];
+        
+        _birthday = [self readSingleValueFromRecord:record propertyID:kABPersonBirthdayProperty];
     }
     return self;
 }
