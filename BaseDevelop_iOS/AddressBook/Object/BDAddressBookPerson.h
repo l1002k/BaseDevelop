@@ -12,6 +12,7 @@
 //某些property的值是键值对，但是key会重复
 @interface BDAddressBookPersonValueInfo : NSObject
 
+@property(nonatomic)NSNumber *valueIdentifier;
 @property(nonatomic)NSString *key;
 @property(nonatomic)id value;
 

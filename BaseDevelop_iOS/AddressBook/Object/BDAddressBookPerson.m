@@ -167,9 +167,11 @@
         CFTypeRef valueRef = ABMultiValueCopyValueAtIndex(ref, i);
         CFStringRef labelRef = ABMultiValueCopyLabelAtIndex(ref, i);
         CFStringRef localizedLabelRef = ABAddressBookCopyLocalizedLabel(labelRef);
+        ABMultiValueIdentifier identifier = ABMultiValueGetIdentifierAtIndex(ref, i);
         BDAddressBookPersonValueInfo *valueInfo = [[BDAddressBookPersonValueInfo alloc] init];
         valueInfo.key = CFBridgingRelease(localizedLabelRef);
         valueInfo.value = CFBridgingRelease(valueRef);
+        valueInfo.valueIdentifier = @(identifier);
         [result addObject:valueInfo];
         CFSafeRelease(labelRef);
     }
