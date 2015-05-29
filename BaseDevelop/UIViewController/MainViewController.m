@@ -12,6 +12,7 @@
 #import "PushViewController.h"
 #import "PresentViewController.h"
 #import "BDNavigationViewController.h"
+#import "BDAddressBookManager.h"
 
 @interface MainViewController ()
 {
@@ -39,7 +40,9 @@
 }
 
 - (void)dismiss:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+//    [self dismissViewControllerAnimated:YES completion:NULL];
+    BDAddressBookManager *manager = [BDAddressBookManager new];
+    [manager test];
 }
 
 - (IBAction)statusBarAction:(id)sender {

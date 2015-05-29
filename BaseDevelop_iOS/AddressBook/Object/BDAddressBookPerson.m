@@ -136,7 +136,7 @@
         case kABIntegerPropertyType:
         case kABRealPropertyType:
         case kABDateTimePropertyType:
-            case kABDictionaryPropertyType:
+        case kABDictionaryPropertyType:
             result = [self parseSingleRef:ref propertyName:propertyName];
             break;
         case kABMultiStringPropertyType:

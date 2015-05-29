@@ -10,4 +10,6 @@
 
 @interface BDAddressBookManager : NSObject
 
+- (void)test;
+
 @end

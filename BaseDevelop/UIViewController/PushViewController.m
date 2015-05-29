@@ -9,12 +9,7 @@
 #import "PushViewController.h"
 #import "UIView+FrameAdditions.h"
 #import "MainViewController.h"
-#import "BDNavigationBar.h"
 #import "BDNavigationViewController.h"
-#import <AddressBook/AddressBook.h>
-#import "BDAddressBookPerson.h"
-#import "BDAddressBookGroup.h"
-#import "BDAddressBookSource.h"
 
 @interface PushViewController ()
 
@@ -55,10 +50,9 @@
 }
 
 - (void)btnAction:(id)sender {
-    [self test];
-//    PushViewController *push = [[PushViewController alloc]init];
-//    push.index = _index + 1;
-//    [self.navigationController pushViewController:push animated:YES];
+    PushViewController *push = [[PushViewController alloc]init];
+    push.index = _index + 1;
+    [self.navigationController pushViewController:push animated:YES];
 }
 
 - (void)btn1Action:(id)sender {
@@ -69,29 +63,6 @@
 
 - (void)dismiss:(UIBarButtonItem *)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
-- (void)test {
-    CFErrorRef error = NULL;
-    
-    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
-    //等待同意后向下执行
-    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-    ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
-        dispatch_semaphore_signal(sema);
-    });
-    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
-    
-    CFArrayRef records = ABAddressBookCopyArrayOfAllPeople(addressBook);
-//    ABRecordRef dRecord = NULL;
-    
-    for (int i=0; i<CFArrayGetCount(records); i++) {
-        ABRecordRef record = CFArrayGetValueAtIndex(records, i);
-        NSArray *values = [BDAddressBookPerson readValueFromRecord:record propertyName:@"phone"];
-        NSArray *phones = [values allPersonValueValues];
-        NSLog(@"phones = %@", phones);
-    }
-    CFRelease(addressBook);
 }
 
 @end
