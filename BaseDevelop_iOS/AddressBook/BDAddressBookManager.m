@@ -8,9 +8,6 @@
 
 #import "BDAddressBookManager.h"
 #import <AddressBook/AddressBook.h>
-#import <AddressBookUI/AddressBookUI.h>
-
-#define CFSafeRelease(cf) (cf != NULL ? CFRelease(cf) : NULL)
 
 @implementation BDAddressBookManager
 

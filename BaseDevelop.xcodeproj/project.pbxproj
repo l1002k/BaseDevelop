@@ -49,6 +49,9 @@
 		E6B1277B1B12BA48003E4F25 /* UIImage+Util.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B127791B12BA48003E4F25 /* UIImage+Util.h */; };
 		E6B1277C1B12BA48003E4F25 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B1277A1B12BA48003E4F25 /* UIImage+Util.m */; };
 		E6B1277D1B12BA48003E4F25 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B1277A1B12BA48003E4F25 /* UIImage+Util.m */; };
+		E6E1E8901B18438B0011CC84 /* NSObject+Property.h in Headers */ = {isa = PBXBuildFile; fileRef = E6E1E88E1B18438B0011CC84 /* NSObject+Property.h */; };
+		E6E1E8911B18438B0011CC84 /* NSObject+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E88F1B18438B0011CC84 /* NSObject+Property.m */; };
+		E6E1E8921B18438B0011CC84 /* NSObject+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E88F1B18438B0011CC84 /* NSObject+Property.m */; };
 		F5F804461B17427500814E8F /* BDAddressBookManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F5F804441B17427500814E8F /* BDAddressBookManager.h */; };
 		F5F804471B17427500814E8F /* BDAddressBookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F804451B17427500814E8F /* BDAddressBookManager.m */; };
 		F5F804481B17427500814E8F /* BDAddressBookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F804451B17427500814E8F /* BDAddressBookManager.m */; };
@@ -109,6 +112,8 @@
 		E6A6F93A1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodInvocationObserving.m"; sourceTree = "<group>"; };
 		E6B127791B12BA48003E4F25 /* UIImage+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Util.h"; sourceTree = "<group>"; };
 		E6B1277A1B12BA48003E4F25 /* UIImage+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
+		E6E1E88E1B18438B0011CC84 /* NSObject+Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Property.h"; sourceTree = "<group>"; };
+		E6E1E88F1B18438B0011CC84 /* NSObject+Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Property.m"; sourceTree = "<group>"; };
 		F5F804441B17427500814E8F /* BDAddressBookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDAddressBookManager.h; sourceTree = "<group>"; };
 		F5F804451B17427500814E8F /* BDAddressBookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDAddressBookManager.m; sourceTree = "<group>"; };
 		F5F804491B1762A900814E8F /* BDAddressBookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDAddressBookInfo.h; sourceTree = "<group>"; };
@@ -152,6 +157,8 @@
 		E63F3A891AECE35000EC371B /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
+				E6E1E88E1B18438B0011CC84 /* NSObject+Property.h */,
+				E6E1E88F1B18438B0011CC84 /* NSObject+Property.m */,
 				E66C40431AFA3170004665D4 /* NSObject+RuntimeProgram.h */,
 				E66C40441AFA3170004665D4 /* NSObject+RuntimeProgram.m */,
 			);
@@ -344,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E66C40451AFA3170004665D4 /* NSObject+RuntimeProgram.h in Headers */,
+				E6E1E8901B18438B0011CC84 /* NSObject+Property.h in Headers */,
 				E69DCEDA1A80B7060002712D /* UIView+FrameAdditions.h in Headers */,
 				E69DCF841A81BDFB0002712D /* BDViewControllerCommonConfig.h in Headers */,
 				F5F8044B1B1762A900814E8F /* BDAddressBookInfo.h in Headers */,
@@ -486,6 +494,7 @@
 				E69DCEE41A80B7930002712D /* BDViewController.m in Sources */,
 				E6B1277C1B12BA48003E4F25 /* UIImage+Util.m in Sources */,
 				F5F804471B17427500814E8F /* BDAddressBookManager.m in Sources */,
+				E6E1E8911B18438B0011CC84 /* NSObject+Property.m in Sources */,
 				E614278B1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */,
 				E66C40461AFA3170004665D4 /* NSObject+RuntimeProgram.m in Sources */,
 				E69DCEDE1A80B7060002712D /* UIView+Util.m in Sources */,
@@ -517,6 +526,7 @@
 				E69DCEE51A80B7930002712D /* BDViewController.m in Sources */,
 				F5F8044D1B1762A900814E8F /* BDAddressBookInfo.m in Sources */,
 				E69DCF861A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */,
+				E6E1E8921B18438B0011CC84 /* NSObject+Property.m in Sources */,
 				E69DCEDF1A80B7060002712D /* UIView+Util.m in Sources */,
 				E66C40471AFA3170004665D4 /* NSObject+RuntimeProgram.m in Sources */,
 				E614278C1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */,

@@ -25,4 +25,9 @@
 //-------------------- block call ----------------------------------//
 #define SafeBlockCall(block, ...) (block ? block(__VA_ARGS__) : nil)
 //-------------------- block call end ------------------------------//
+
+//-------------------- CF object release ------------------------------//
+#define CFSafeRelease(cf) (cf != NULL ? CFRelease(cf) : NULL)
+//-------------------- CF object release end --------------------------//
+
 #endif

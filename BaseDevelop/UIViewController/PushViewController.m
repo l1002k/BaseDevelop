@@ -8,6 +8,11 @@
 
 #import "PushViewController.h"
 #import "UIView+FrameAdditions.h"
+#import "MainViewController.h"
+#import "BDNavigationBar.h"
+#import "BDNavigationViewController.h"
+#import <AddressBook/AddressBook.h>
+#import "BDAddressBookInfo.h"
 
 @interface PushViewController ()
 
@@ -37,16 +42,65 @@
     [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     btn.backgroundColor = [UIColor magentaColor];
+    
+    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn1.frame = CGRectMake(0, 300, 320, 40);
+    [btn1 setTitle:@"present" forState:UIControlStateNormal];
+    [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn1 addTarget:self action:@selector(btn1Action:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn1];
+    btn1.backgroundColor = [UIColor magentaColor];
 }
 
 - (void)btnAction:(id)sender {
+    [self test];
+    return;
     PushViewController *push = [[PushViewController alloc]init];
     push.index = _index + 1;
     [self.navigationController pushViewController:push animated:YES];
 }
 
+- (void)btn1Action:(id)sender {
+    MainViewController *mainVC = [[MainViewController alloc]init];
+    BDNavigationViewController *navi = [[BDNavigationViewController alloc]initWithRootViewController:mainVC];
+    [self presentViewController:navi animated:YES completion:NULL];
+}
+
 - (void)dismiss:(UIBarButtonItem *)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)test {
+    CFErrorRef error = NULL;
+    
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
+    //等待同意后向下执行
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+        dispatch_semaphore_signal(sema);
+    });
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+    
+    CFArrayRef records = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    ABRecordRef dRecord = NULL;
+    
+    for (int i=0; i<CFArrayGetCount(records); i++) {
+        ABRecordRef record = CFArrayGetValueAtIndex(records, i);
+        CFTypeRef items = ABRecordCopyValue(record, kABPersonPhoneProperty);
+        CFArrayRef phoneNums = ABMultiValueCopyArrayOfAllValues(items);
+        if (phoneNums) {
+            for (int j=0; j<CFArrayGetCount(phoneNums); j++) {
+                NSString *phone = (NSString*)CFArrayGetValueAtIndex(phoneNums, j);
+                if ([phone isEqualToString:@"1500698"]) {
+                    dRecord = record;
+                }
+            }
+        }
+    }
+    
+    BDAddressBookInfo *info = [[BDAddressBookInfo alloc]initWithABRecord:dRecord];
+    
+    CFRelease(addressBook);
 }
 
 @end

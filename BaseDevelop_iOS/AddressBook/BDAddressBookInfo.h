@@ -7,6 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <AddressBook/AddressBook.h>
+
+//某些property的值是键值对，但是key会重复
+@interface BDAddressBookValueInfo : NSObject
+
+@property(nonatomic)NSString *key;
+@property(nonatomic)id value;
+
++ (NSArray *)allKeys:(NSArray *)valueInfos;
++ (NSArray *)allValues:(NSArray *)valueInfos;
+
+@end
 
 @interface BDAddressBookInfo : NSObject
 
@@ -30,19 +43,35 @@
 @property(nonatomic)NSDate *creationDate;           //创建时间
 @property(nonatomic)NSDate *modificationDate;       //最近一次修改时间
 
-@property(nonatomic)UIImage *image;                 //照片
+@property(nonatomic)UIImage *thumbnailImage;        //缩略照片
+@property(nonatomic)UIImage *originalImage;         //原始照片
 @property(nonatomic)NSDate *birthday;               //生日
 
-@property(nonatomic)id email;                       //电子邮件
-@property(nonatomic)id address;                     //地址
-@property(nonatomic)id date;                        //日期
-@property(nonatomic)id phone;                       //电话
-@property(nonatomic)id instantMessage;              //即时聊天信息
-@property(nonatomic)id url;                         //URL
-@property(nonatomic)id relatedNames;                //关联人
-@property(nonatomic)id socialProfile;               //社交信息
-@property(nonatomic)id kind;                        //类型(公司或个人)
-@property(nonatomic)id alternateBirthday;           //生日的扩展
+@property(nonatomic)NSNumber *kind;                 //类型(公司kABPersonKindOrganization或个人kABPersonKindPerson)
 
+@property(nonatomic)NSDictionary *alternateBirthday;//生日的扩展,农历等
+
+/*
+ *   以下数据都是NSArray<BDAddressBookValueInfo *>的结构
+ *   其中phone, email, instantMessage, url的BDAddressBookValueInfo.value是NSString。key可能不唯一导致不能用NSDictionary
+ *   date的BDAddressBookValueInfo.value是NSDate
+ *   socialProfile,relatedNames, address的BDAddressBookValueInfo.value是NSDictionary
+ */
+//NSString
+@property(nonatomic)NSArray *phone;                 //电话
+@property(nonatomic)NSArray *email;                 //电子邮件
+@property(nonatomic)NSArray *instantMessage;        //即时聊天信息
+@property(nonatomic)NSArray *url;                   //URL
+//NSDate
+@property(nonatomic)NSArray *date;                  //日期
+//NSDictionary
+@property(nonatomic)NSArray *socialProfile;         //社交信息
+@property(nonatomic)NSArray *relatedNames;          //关联人
+@property(nonatomic)NSArray *address;               //地址
+
+- (instancetype)initWithABRecord:(ABRecordRef)record;
+
+//根据上面的属性名返回值
++ (id)readValueFromRecord:(ABRecordRef)record propertyName:(NSString *)propertyName;
 
 @end
