@@ -8,7 +8,6 @@
 
 #import "BDAddressBookGroup.h"
 #import "BDAddressBookPerson.h"
-#import "NSObject+Property.h"
 #import "BDCommonUtil.h"
 
 @implementation BDAddressBookGroup
