@@ -12,7 +12,9 @@
 #import "BDNavigationBar.h"
 #import "BDNavigationViewController.h"
 #import <AddressBook/AddressBook.h>
-#import "BDAddressBookInfo.h"
+#import "BDAddressBookPerson.h"
+#import "BDAddressBookGroup.h"
+#import "BDAddressBookSource.h"
 
 @interface PushViewController ()
 
@@ -54,10 +56,9 @@
 
 - (void)btnAction:(id)sender {
     [self test];
-    return;
-    PushViewController *push = [[PushViewController alloc]init];
-    push.index = _index + 1;
-    [self.navigationController pushViewController:push animated:YES];
+//    PushViewController *push = [[PushViewController alloc]init];
+//    push.index = _index + 1;
+//    [self.navigationController pushViewController:push animated:YES];
 }
 
 - (void)btn1Action:(id)sender {
@@ -82,24 +83,14 @@
     dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
     
     CFArrayRef records = ABAddressBookCopyArrayOfAllPeople(addressBook);
-    ABRecordRef dRecord = NULL;
+//    ABRecordRef dRecord = NULL;
     
     for (int i=0; i<CFArrayGetCount(records); i++) {
         ABRecordRef record = CFArrayGetValueAtIndex(records, i);
-        CFTypeRef items = ABRecordCopyValue(record, kABPersonPhoneProperty);
-        CFArrayRef phoneNums = ABMultiValueCopyArrayOfAllValues(items);
-        if (phoneNums) {
-            for (int j=0; j<CFArrayGetCount(phoneNums); j++) {
-                NSString *phone = (NSString*)CFArrayGetValueAtIndex(phoneNums, j);
-                if ([phone isEqualToString:@"1500698"]) {
-                    dRecord = record;
-                }
-            }
-        }
+        NSArray *values = [BDAddressBookPerson readValueFromRecord:record propertyName:@"phone"];
+        NSArray *phones = [values allPersonValueValues];
+        NSLog(@"phones = %@", phones);
     }
-    
-    BDAddressBookInfo *info = [[BDAddressBookInfo alloc]initWithABRecord:dRecord];
-    
     CFRelease(addressBook);
 }
 

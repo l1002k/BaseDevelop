@@ -1,29 +1,30 @@
 //
-//  BDAddressBookInfo.h
+//  BDAddressBookPerson.h
 //  BaseDevelop
 //
 //  Created by  雷琨 on 15/5/28.
 //  Copyright (c) 2015年 leikun. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BDAddressBookObject.h"
 #import <UIKit/UIKit.h>
-#import <AddressBook/AddressBook.h>
 
 //某些property的值是键值对，但是key会重复
-@interface BDAddressBookValueInfo : NSObject
+@interface BDAddressBookPersonValueInfo : NSObject
 
 @property(nonatomic)NSString *key;
 @property(nonatomic)id value;
 
-+ (NSArray *)allKeys:(NSArray *)valueInfos;
-+ (NSArray *)allValues:(NSArray *)valueInfos;
+@end
+
+@interface NSArray (BDAddressBookPersonValueInfo)
+
+- (NSArray *)allPersonValueKeys;
+- (NSArray *)allPersonValueValues;
 
 @end
 
-@interface BDAddressBookInfo : NSObject
-
-@property(nonatomic)NSNumber *recordID;             //唯一标示符
+@interface BDAddressBookPerson : BDAddressBookObject
 
 @property(nonatomic)NSString *firstName;            //姓氏
 @property(nonatomic)NSString *lastName;             //名字
@@ -52,7 +53,7 @@
 @property(nonatomic)NSDictionary *alternateBirthday;//生日的扩展,农历等
 
 /*
- *   以下数据都是NSArray<BDAddressBookValueInfo *>的结构
+ *   以下数据都是NSArray<BDAddressBookPersonValueInfo *>的结构
  *   其中phone, email, instantMessage, url的BDAddressBookValueInfo.value是NSString。key可能不唯一导致不能用NSDictionary
  *   date的BDAddressBookValueInfo.value是NSDate
  *   socialProfile,relatedNames, address的BDAddressBookValueInfo.value是NSDictionary
@@ -68,10 +69,5 @@
 @property(nonatomic)NSArray *socialProfile;         //社交信息
 @property(nonatomic)NSArray *relatedNames;          //关联人
 @property(nonatomic)NSArray *address;               //地址
-
-- (instancetype)initWithABRecord:(ABRecordRef)record;
-
-//根据上面的属性名返回值
-+ (id)readValueFromRecord:(ABRecordRef)record propertyName:(NSString *)propertyName;
 
 @end

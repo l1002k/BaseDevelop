@@ -1,28 +1,38 @@
 //
-//  BDAddressBookInfo.m
+//  BDAddressBookPerson.m
 //  BaseDevelop
 //
 //  Created by  雷琨 on 15/5/28.
 //  Copyright (c) 2015年 leikun. All rights reserved.
 //
 
-#import "BDAddressBookInfo.h"
+#import "BDAddressBookPerson.h"
 #import "BDCommonUtil.h"
 #import "NSObject+Property.h"
 
-@implementation BDAddressBookValueInfo
+@implementation BDAddressBookPersonValueInfo
 
-+ (NSArray *)allKeys:(NSArray *)valueInfos {
+@end
+
+@implementation NSArray (BDAddressBookPersonValueInfo)
+
+- (NSArray *)allPersonValueKeys {
     NSMutableArray *result = [NSMutableArray array];
-    for(BDAddressBookValueInfo *info in valueInfos) {
+    for(BDAddressBookPersonValueInfo *info in self) {
+        if (![info isKindOfClass:BDAddressBookPersonValueInfo.class]) {
+            return nil;
+        }
         [result addObject:info.key];
     }
     return result.count > 0 ? result : nil;
 }
 
-+ (NSArray *)allValues:(NSArray *)valueInfos {
+- (NSArray *)allPersonValueValues {
     NSMutableArray *result = [NSMutableArray array];
-    for(BDAddressBookValueInfo *info in valueInfos) {
+    for(BDAddressBookPersonValueInfo *info in self) {
+        if (![info isKindOfClass:BDAddressBookPersonValueInfo.class]) {
+            return nil;
+        }
         [result addObject:info.value];
     }
     return result.count > 0 ? result : nil;
@@ -30,20 +40,7 @@
 
 @end
 
-@implementation BDAddressBookInfo
-
-- (instancetype)initWithABRecord:(ABRecordRef)record
-{
-    self = [super init];
-    if (self) {
-        NSArray *propertyNames = [NSObject propertyNamesForClass:BDAddressBookInfo.class];
-        for(NSString *propertyName in propertyNames) {
-            id propertyValue = [self.class readValueFromRecord:record propertyName:propertyName];
-            [self setValue:propertyValue forKey:propertyName];
-        }
-    }
-    return self;
-}
+@implementation BDAddressBookPerson
 
 #pragma mark - 公用属性
 + (ABPropertyID)getAddressPropertyIDFromPropertyName:(NSString *)propertyName {
@@ -90,10 +87,20 @@
     return [propertyID intValue];
 }
 
+- (BDAddressBookObjectType)objectType {
+    return BDAddressBookObjectPerson;
+}
+
 #pragma mark - 读取属性方法
+//基类方法
 + (id)readValueFromRecord:(ABRecordRef)record propertyName:(NSString *)propertyName {
+    ABRecordType type = ABRecordGetRecordType(record);
+    if (type != kABPersonType) {
+        NSAssert(NO, @"record的type类型不是kABPersonType");
+        return nil;
+    }
     if ([propertyName isEqualToString:@"recordID"]) {
-        return [self readRecordID:record];
+        return [super readValueFromRecord:record propertyName:propertyName];
     } else if ([propertyName isEqualToString:@"thumbnailImage"]) {
         return [self readImageValueFromRecord:record imageFormat:kABPersonImageFormatThumbnail];
     } else if ([propertyName isEqualToString:@"originalImage"]) {
@@ -101,11 +108,6 @@
     } else {
         return [self readValueWithPropertyIDFromRecord:record propertyName:propertyName];
     }
-}
-
-//读取唯一标示符
-+ (NSNumber *)readRecordID:(ABRecordRef)record {
-    return @(ABRecordGetRecordID(record));
 }
 
 //读取图片
@@ -166,7 +168,7 @@
         CFTypeRef valueRef = ABMultiValueCopyValueAtIndex(ref, i);
         CFStringRef labelRef = ABMultiValueCopyLabelAtIndex(ref, i);
         CFStringRef localizedLabelRef = ABAddressBookCopyLocalizedLabel(labelRef);
-        BDAddressBookValueInfo *valueInfo = [[BDAddressBookValueInfo alloc] init];
+        BDAddressBookPersonValueInfo *valueInfo = [[BDAddressBookPersonValueInfo alloc] init];
         valueInfo.key = CFBridgingRelease(localizedLabelRef);
         valueInfo.value = CFBridgingRelease(valueRef);
         [result addObject:valueInfo];
