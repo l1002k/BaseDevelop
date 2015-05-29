@@ -32,13 +32,6 @@ static void *const BDAddressBookManagerQueueKey = (void *)&BDAddressBookManagerQ
     return self;
 }
 
-- (void)dealloc
-{
-    [self safeRunBlock:^{
-        CFSafeRelease(self.addressBookRef);
-    }];
-}
-
 - (void)test {
     [self safeRunAddressBookBlock:^(ABAddressBookRef ref, NSError* error) {
         CFArrayRef records = ABAddressBookCopyArrayOfAllPeople(ref);
