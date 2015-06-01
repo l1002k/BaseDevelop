@@ -13,10 +13,6 @@
 
 static void *const BDAddressBookManagerOperationQueueKey = (void *)&BDAddressBookManagerOperationQueueKey;
 
-@interface BDAddressBookManager ()
-
-@end
-
 @implementation BDAddressBookManager
 
 - (void)backupAddressBookToPath:(NSString *)path completion:(BDABMAddressBookCompletionBlock)completionBlock {
@@ -46,9 +42,27 @@ static void *const BDAddressBookManagerOperationQueueKey = (void *)&BDAddressBoo
         NSThread *callThead = [NSThread currentThread];
         [self performABOperationBlockInABOQ:^(ABAddressBookRef addressBookRef, NSError *error) {
             if (!error) {
-                CFArrayRef persons = ABAddressBookCopyArrayOfAllPeople(addressBookRef);
-                if (CFArrayGetCount(persons)) {
+                //先删旧数据
+                CFArrayRef sourceRecords = ABAddressBookCopyArrayOfAllPeople(addressBookRef);
+                for(int i = 0; i < CFArrayGetCount(sourceRecords); i++) {
+                    ABRecordRef record = CFArrayGetValueAtIndex(sourceRecords, i);
+                    ABAddressBookRemoveRecord(addressBookRef, record, NULL);
                 }
+                CFSafeRelease(sourceRecords);
+                
+                //再添加备份数据
+                NSData *vcardData = [[NSData alloc]initWithContentsOfFile:path];
+                ABRecordRef sourceRef = ABAddressBookCopyDefaultSource(addressBookRef);
+                CFArrayRef records = ABPersonCreatePeopleInSourceWithVCardRepresentation(sourceRef, (__bridge CFDataRef)vcardData);
+                for(int i = 0; i < CFArrayGetCount(records); i++) {
+                    ABRecordRef record = CFArrayGetValueAtIndex(records, i);
+                    ABAddressBookAddRecord(addressBookRef, record, NULL);
+                }
+                CFSafeRelease(sourceRef);
+                CFSafeRelease(records);
+                
+                //保存
+                error = [self saveIfNeedAddressBookRef:addressBookRef];
             }
             [self performBlock:^{
                 SafeBlockCall(completionBlock, error);
@@ -131,6 +145,19 @@ static void *const BDAddressBookManagerOperationQueueKey = (void *)&BDAddressBoo
     });
     dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
     return accessError;
+}
+
+//保存addressBook
+- (NSError *)saveIfNeedAddressBookRef:(ABAddressBookRef)addressBookRef {
+    NSError *error = nil;
+    if (ABAddressBookHasUnsavedChanges(addressBookRef)) {
+        CFErrorRef saveError = NULL;
+        ABAddressBookSave(addressBookRef, &saveError);
+        if (saveError) {
+            error = [NSError errorWithDomain:@"保存失败" code:BDABMSaveAddressBookError userInfo:@{@"sourceError":(__bridge NSError *)saveError}];
+        }
+    }
+    return error;
 }
 
 @end
