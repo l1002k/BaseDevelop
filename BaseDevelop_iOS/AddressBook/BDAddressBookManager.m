@@ -154,7 +154,7 @@ static void *const BDAddressBookManagerOperationQueueKey = (void *)&BDAddressBoo
         CFErrorRef saveError = NULL;
         ABAddressBookSave(addressBookRef, &saveError);
         if (saveError) {
-            error = [NSError errorWithDomain:@"保存失败" code:BDABMSaveAddressBookError userInfo:@{@"sourceError":(__bridge NSError *)saveError}];
+            error = [NSError errorWithDomain:@"保存失败" code:BDABMSaveAddressBookError userInfo:@{@"sourceError":CFBridgingRelease(saveError)}];
         }
     }
     return error;
