@@ -42,7 +42,6 @@
 - (void)dismiss:(UIBarButtonItem *)sender {
 //    [self dismissViewControllerAnimated:YES completion:NULL];
     BDAddressBookManager *manager = [BDAddressBookManager new];
-    [manager test];
 }
 
 - (IBAction)statusBarAction:(id)sender {

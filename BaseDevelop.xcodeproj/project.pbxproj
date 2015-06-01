@@ -49,6 +49,12 @@
 		E6B1277B1B12BA48003E4F25 /* UIImage+Util.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B127791B12BA48003E4F25 /* UIImage+Util.h */; };
 		E6B1277C1B12BA48003E4F25 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B1277A1B12BA48003E4F25 /* UIImage+Util.m */; };
 		E6B1277D1B12BA48003E4F25 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B1277A1B12BA48003E4F25 /* UIImage+Util.m */; };
+		E6C3E2491B1C4D3300C42DEE /* NSString+FileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E6C3E2471B1C4D3300C42DEE /* NSString+FileManager.h */; };
+		E6C3E24A1B1C4D3300C42DEE /* NSString+FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C3E2481B1C4D3300C42DEE /* NSString+FileManager.m */; };
+		E6C3E24B1B1C4D3300C42DEE /* NSString+FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C3E2481B1C4D3300C42DEE /* NSString+FileManager.m */; };
+		E6C3E24E1B1C527A00C42DEE /* NSObject+PerformBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = E6C3E24C1B1C527A00C42DEE /* NSObject+PerformBlock.h */; };
+		E6C3E24F1B1C527A00C42DEE /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C3E24D1B1C527A00C42DEE /* NSObject+PerformBlock.m */; };
+		E6C3E2501B1C527A00C42DEE /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C3E24D1B1C527A00C42DEE /* NSObject+PerformBlock.m */; };
 		E6E1E8901B18438B0011CC84 /* NSObject+Property.h in Headers */ = {isa = PBXBuildFile; fileRef = E6E1E88E1B18438B0011CC84 /* NSObject+Property.h */; };
 		E6E1E8911B18438B0011CC84 /* NSObject+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E88F1B18438B0011CC84 /* NSObject+Property.m */; };
 		E6E1E8921B18438B0011CC84 /* NSObject+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E88F1B18438B0011CC84 /* NSObject+Property.m */; };
@@ -121,6 +127,10 @@
 		E6A6F93A1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodInvocationObserving.m"; sourceTree = "<group>"; };
 		E6B127791B12BA48003E4F25 /* UIImage+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Util.h"; sourceTree = "<group>"; };
 		E6B1277A1B12BA48003E4F25 /* UIImage+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
+		E6C3E2471B1C4D3300C42DEE /* NSString+FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FileManager.h"; sourceTree = "<group>"; };
+		E6C3E2481B1C4D3300C42DEE /* NSString+FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FileManager.m"; sourceTree = "<group>"; };
+		E6C3E24C1B1C527A00C42DEE /* NSObject+PerformBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PerformBlock.h"; sourceTree = "<group>"; };
+		E6C3E24D1B1C527A00C42DEE /* NSObject+PerformBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PerformBlock.m"; sourceTree = "<group>"; };
 		E6E1E88E1B18438B0011CC84 /* NSObject+Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Property.h"; sourceTree = "<group>"; };
 		E6E1E88F1B18438B0011CC84 /* NSObject+Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Property.m"; sourceTree = "<group>"; };
 		F5DCB4C81B18AF8A00CC0F38 /* BDAddressBookGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDAddressBookGroup.h; sourceTree = "<group>"; };
@@ -176,6 +186,8 @@
 				E6E1E88F1B18438B0011CC84 /* NSObject+Property.m */,
 				E66C40431AFA3170004665D4 /* NSObject+RuntimeProgram.h */,
 				E66C40441AFA3170004665D4 /* NSObject+RuntimeProgram.m */,
+				E6C3E24C1B1C527A00C42DEE /* NSObject+PerformBlock.h */,
+				E6C3E24D1B1C527A00C42DEE /* NSObject+PerformBlock.m */,
 			);
 			path = NSObject;
 			sourceTree = "<group>";
@@ -278,6 +290,7 @@
 		E69DCED41A80B7060002712D /* category */ = {
 			isa = PBXGroup;
 			children = (
+				E6C3E23C1B1C4B9F00C42DEE /* NSString */,
 				E6B127781B12BA34003E4F25 /* UIImage */,
 				E63B8F271B0489C600B99986 /* UIApplication */,
 				E63F3A891AECE35000EC371B /* NSObject */,
@@ -338,6 +351,16 @@
 			path = BaseDevelop_iOS/UIImage;
 			sourceTree = SOURCE_ROOT;
 		};
+		E6C3E23C1B1C4B9F00C42DEE /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				E6C3E2471B1C4D3300C42DEE /* NSString+FileManager.h */,
+				E6C3E2481B1C4D3300C42DEE /* NSString+FileManager.m */,
+			);
+			name = NSString;
+			path = BaseDevelop_iOS/NSString;
+			sourceTree = SOURCE_ROOT;
+		};
 		E6D257101AE6508200D995CB /* Method-Invocation Observing  */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5DCB4D01B18AF8A00CC0F38 /* BDAddressBookGroup.h in Headers */,
+				E6C3E2491B1C4D3300C42DEE /* NSString+FileManager.h in Headers */,
 				F5DCB4D31B18AF8A00CC0F38 /* BDAddressBookObject.h in Headers */,
 				E66C40451AFA3170004665D4 /* NSObject+RuntimeProgram.h in Headers */,
 				E6E1E8901B18438B0011CC84 /* NSObject+Property.h in Headers */,
@@ -396,6 +420,7 @@
 				E63B8F2A1B0489DE00B99986 /* UIApplication+Util.h in Headers */,
 				E614278A1AB6DFA2000ECA44 /* BDNavigationBar.h in Headers */,
 				E69DCEE31A80B7930002712D /* BDViewController.h in Headers */,
+				E6C3E24E1B1C527A00C42DEE /* NSObject+PerformBlock.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,11 +558,13 @@
 				E66C40461AFA3170004665D4 /* NSObject+RuntimeProgram.m in Sources */,
 				E69DCEDE1A80B7060002712D /* UIView+Util.m in Sources */,
 				E69DCEDB1A80B7060002712D /* UIView+FrameAdditions.m in Sources */,
+				E6C3E24A1B1C4D3300C42DEE /* NSString+FileManager.m in Sources */,
 				E63B8F2B1B0489DE00B99986 /* UIApplication+Util.m in Sources */,
 				E69DCF851A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */,
 				E64B5A5A1A7F617500568B67 /* AppDelegate.m in Sources */,
 				E64B5A571A7F617500568B67 /* main.m in Sources */,
 				E69DCF8C1A81FF350002712D /* PushViewController.m in Sources */,
+				E6C3E24F1B1C527A00C42DEE /* NSObject+PerformBlock.m in Sources */,
 				E69DCED21A80A5CE0002712D /* MainViewController.m in Sources */,
 				E69DCF961A83009A0002712D /* BDNavigationViewController.m in Sources */,
 				E69DCF911A81FFD20002712D /* PresentViewController.m in Sources */,
@@ -560,10 +587,12 @@
 			files = (
 				E69DCEE51A80B7930002712D /* BDViewController.m in Sources */,
 				E69DCF861A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */,
+				E6C3E24B1B1C4D3300C42DEE /* NSString+FileManager.m in Sources */,
 				F5DCB4D21B18AF8A00CC0F38 /* BDAddressBookGroup.m in Sources */,
 				E6E1E8921B18438B0011CC84 /* NSObject+Property.m in Sources */,
 				E69DCEDF1A80B7060002712D /* UIView+Util.m in Sources */,
 				E66C40471AFA3170004665D4 /* NSObject+RuntimeProgram.m in Sources */,
+				E6C3E2501B1C527A00C42DEE /* NSObject+PerformBlock.m in Sources */,
 				F5DCB4D51B18AF8A00CC0F38 /* BDAddressBookObject.m in Sources */,
 				E614278C1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */,
 				F5DCB4DB1B18AF8A00CC0F38 /* BDAddressBookSource.m in Sources */,
