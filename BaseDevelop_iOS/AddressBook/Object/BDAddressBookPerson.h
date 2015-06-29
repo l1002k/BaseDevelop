@@ -17,8 +17,6 @@
 @property(nonatomic)NSString *key;                //由labelKey转换而来
 @property(nonatomic)id value;
 
-- (void)
-
 @end
 
 @interface NSArray (BDAddressBookPersonValueInfo)
