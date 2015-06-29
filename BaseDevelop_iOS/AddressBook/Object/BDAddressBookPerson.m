@@ -69,10 +69,9 @@
                                 @"instantMessage":@(kABPersonInstantMessageProperty),
                                 @"url":@(kABPersonURLProperty),
                                 @"date":@(kABPersonDateProperty),
-                                @"alternateBirthday":@(kABPersonAlternateBirthdayProperty),
                                 @"socialProfile":@(kABPersonSocialProfileProperty),
                                 @"relatedNames":@(kABPersonRelatedNamesProperty),
-                                @"address":@(kABPersonAddressProperty)
+                                @"address":@(kABPersonAddressProperty),
                                };
     });
     NSNumber *propertyID = [nameToIDDictionary objectForKey:propertyName];
@@ -80,6 +79,11 @@
        NSAssert(NO, @"recordID, thumbnailImage, originalImage没有propertyID属性");
        return kABPropertyInvalidID;
     } else if (propertyID == nil) {
+        //对于ios8新增的字段进行单独处理，兼容ios7
+        if ([propertyName isEqualToString:@"alternateBirthday"]) {
+            return SystemVersionHigherThanOrEqualTo(@"8.0")?kABPersonAlternateBirthdayProperty:kABPropertyInvalidID;
+        }
+        
         NSAssert(NO, @"未在nameToIDDictionary字典中定义的propertyName:%@",propertyName);
         return kABPropertyInvalidID;
     }
@@ -156,6 +160,7 @@
     return result;
 }
 
+/*--------下面的方法是解析单个属性的值--------------*/
 + (id)parseSingleRef:(CFTypeRef)ref propertyName:(NSString *)propertyName{
     return (__bridge id)ref;
 }
@@ -191,6 +196,11 @@
     
     return result.count > 0 ? result : nil;
 }
+
+/*--------下面的方法是解析单个属性的值 end----------*/
+
+#pragma mark - 转换成ABRecordRef
+
 
 
 @end
