@@ -13,8 +13,11 @@
 @interface BDAddressBookPersonValueInfo : NSObject
 
 @property(nonatomic)NSNumber *valueIdentifier;
-@property(nonatomic)NSString *key;
+@property(nonatomic, readonly)NSString *labelKey; //AddressBook库使用的关键字
+@property(nonatomic)NSString *key;                //由labelKey转换而来
 @property(nonatomic)id value;
+
+- (void)
 
 @end
 
@@ -45,8 +48,11 @@
 @property(nonatomic)NSDate *creationDate;           //创建时间
 @property(nonatomic)NSDate *modificationDate;       //最近一次修改时间
 
-@property(nonatomic)UIImage *thumbnailImage;        //缩略照片
-@property(nonatomic)UIImage *originalImage;         //原始照片
+//thumbnailImage, originalImage不支持修改
+@property(nonatomic, readonly)UIImage *thumbnailImage;        //缩略照片
+@property(nonatomic, readonly)UIImage *originalImage;         //原始照片
+@property(nonatomic)UIImage *sourceImage;           //未处理过的照片
+
 @property(nonatomic)NSDate *birthday;               //生日
 
 @property(nonatomic)NSNumber *kind;                 //类型(公司kABPersonKindOrganization或个人kABPersonKindPerson)
@@ -70,5 +76,7 @@
 @property(nonatomic)NSArray *socialProfile;         //社交信息
 @property(nonatomic)NSArray *relatedNames;          //关联人
 @property(nonatomic)NSArray *address;               //地址
+
+- (ABRecordRef)createRecordRefWithoutRecordID;
 
 @end
