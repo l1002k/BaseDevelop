@@ -28,8 +28,11 @@
         return [super readValueFromRecord:record propertyName:propertyName];
     } else if ([propertyName isEqualToString:@"groupName"]) {
         return CFBridgingRelease(ABRecordCopyValue(record, kABGroupNameProperty));
-    } else {
+    } else if ([propertyName isEqualToString:@"persons"]){
         return [self readPersons:record];
+    } else {
+        NSAssert(NO, @"未知的属性名");
+        return nil;
     }
 }
 

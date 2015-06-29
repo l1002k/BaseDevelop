@@ -11,9 +11,9 @@
 
 typedef enum {
     BDAddressBookObjectNotDetermined = -1,
-    BDAddressBookObjectPerson,
-    BDAddressBookObjectGroup,
-    BDAddressBookObjectSource
+    BDAddressBookObjectPerson = kABPersonType,
+    BDAddressBookObjectGroup =  kABGroupType,
+    BDAddressBookObjectSource = kABSourceType
 } BDAddressBookObjectType;
 
 @interface BDAddressBookObject : NSObject
