@@ -9,12 +9,10 @@
 #import "BDViewController.h"
 #import "UIView+Util.h"
 #import "BDCommonUtil.h"
-#import "BDViewControllerCommonConfig.h"
 
 static BOOL BDVCIsPresentAndDismissAnimated = NO;
 
 @interface BDViewController () {
-    BDViewControllerCommonConfig *_commonConfig;
 }
 
 @end
@@ -25,7 +23,6 @@ static BOOL BDVCIsPresentAndDismissAnimated = NO;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // init common config for view controller
-        _commonConfig = [[BDViewControllerCommonConfig alloc] init];
     }
     return self;
 }

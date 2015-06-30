@@ -33,9 +33,6 @@
 		E69DCEE41A80B7930002712D /* BDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCEE21A80B7930002712D /* BDViewController.m */; };
 		E69DCEE51A80B7930002712D /* BDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCEE21A80B7930002712D /* BDViewController.m */; };
 		E69DCEE81A80CE310002712D /* BDCommonUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCEE71A80CE310002712D /* BDCommonUtil.h */; };
-		E69DCF841A81BDFB0002712D /* BDViewControllerCommonConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCF821A81BDFB0002712D /* BDViewControllerCommonConfig.h */; };
-		E69DCF851A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF831A81BDFB0002712D /* BDViewControllerCommonConfig.m */; };
-		E69DCF861A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF831A81BDFB0002712D /* BDViewControllerCommonConfig.m */; };
 		E69DCF8C1A81FF350002712D /* PushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF8A1A81FF350002712D /* PushViewController.m */; };
 		E69DCF8D1A81FF350002712D /* PushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69DCF8B1A81FF350002712D /* PushViewController.xib */; };
 		E69DCF911A81FFD20002712D /* PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCF8F1A81FFD20002712D /* PresentViewController.m */; };
@@ -113,8 +110,6 @@
 		E69DCEE11A80B7930002712D /* BDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDViewController.h; sourceTree = "<group>"; };
 		E69DCEE21A80B7930002712D /* BDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDViewController.m; sourceTree = "<group>"; };
 		E69DCEE71A80CE310002712D /* BDCommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDCommonUtil.h; sourceTree = "<group>"; };
-		E69DCF821A81BDFB0002712D /* BDViewControllerCommonConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDViewControllerCommonConfig.h; sourceTree = "<group>"; };
-		E69DCF831A81BDFB0002712D /* BDViewControllerCommonConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDViewControllerCommonConfig.m; sourceTree = "<group>"; };
 		E69DCF891A81FF350002712D /* PushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushViewController.h; sourceTree = "<group>"; };
 		E69DCF8A1A81FF350002712D /* PushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushViewController.m; sourceTree = "<group>"; };
 		E69DCF8B1A81FF350002712D /* PushViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PushViewController.xib; sourceTree = "<group>"; };
@@ -313,7 +308,6 @@
 		E69DCEE01A80B7790002712D /* inheritance */ = {
 			isa = PBXGroup;
 			children = (
-				E69DCF811A81BDFB0002712D /* BDViewController */,
 				E69DCEE11A80B7930002712D /* BDViewController.h */,
 				E69DCEE21A80B7930002712D /* BDViewController.m */,
 				E69DCF931A83009A0002712D /* BDNavigationViewController.h */,
@@ -330,15 +324,6 @@
 				E69DCEE71A80CE310002712D /* BDCommonUtil.h */,
 			);
 			path = util;
-			sourceTree = "<group>";
-		};
-		E69DCF811A81BDFB0002712D /* BDViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E69DCF821A81BDFB0002712D /* BDViewControllerCommonConfig.h */,
-				E69DCF831A81BDFB0002712D /* BDViewControllerCommonConfig.m */,
-			);
-			path = BDViewController;
 			sourceTree = "<group>";
 		};
 		E6B127781B12BA34003E4F25 /* UIImage */ = {
@@ -408,7 +393,6 @@
 				E66C40451AFA3170004665D4 /* NSObject+RuntimeProgram.h in Headers */,
 				E6E1E8901B18438B0011CC84 /* NSObject+Property.h in Headers */,
 				E69DCEDA1A80B7060002712D /* UIView+FrameAdditions.h in Headers */,
-				E69DCF841A81BDFB0002712D /* BDViewControllerCommonConfig.h in Headers */,
 				E6A6F93B1AF20ABD00ABA73F /* NSObject+MethodInvocationObserving.h in Headers */,
 				E6B1277B1B12BA48003E4F25 /* UIImage+Util.h in Headers */,
 				E69DCEE81A80CE310002712D /* BDCommonUtil.h in Headers */,
@@ -560,7 +544,6 @@
 				E69DCEDB1A80B7060002712D /* UIView+FrameAdditions.m in Sources */,
 				E6C3E24A1B1C4D3300C42DEE /* NSString+FileManager.m in Sources */,
 				E63B8F2B1B0489DE00B99986 /* UIApplication+Util.m in Sources */,
-				E69DCF851A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */,
 				E64B5A5A1A7F617500568B67 /* AppDelegate.m in Sources */,
 				E64B5A571A7F617500568B67 /* main.m in Sources */,
 				E69DCF8C1A81FF350002712D /* PushViewController.m in Sources */,
@@ -586,7 +569,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E69DCEE51A80B7930002712D /* BDViewController.m in Sources */,
-				E69DCF861A81BDFB0002712D /* BDViewControllerCommonConfig.m in Sources */,
 				E6C3E24B1B1C4D3300C42DEE /* NSString+FileManager.m in Sources */,
 				F5DCB4D21B18AF8A00CC0F38 /* BDAddressBookGroup.m in Sources */,
 				E6E1E8921B18438B0011CC84 /* NSObject+Property.m in Sources */,
