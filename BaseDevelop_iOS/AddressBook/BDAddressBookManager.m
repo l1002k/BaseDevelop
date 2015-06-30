@@ -31,7 +31,7 @@ static void *const BDAddressBookManagerOperationQueueKey = (void *)&BDAddressBoo
             } onThread:callThead waitUntilDone:YES];
         }];
     } else {
-        NSError *error = [NSError errorWithDomain:@"要缓存的路径不合法" code:BDABMReBackupCacheNotExistsError userInfo:nil];
+        NSError *error = [NSError errorWithDomain:@"要缓存的路径不合法" code:BDABMBackupIllegalCachePathError userInfo:nil];
         SafeBlockCall(completionBlock, error);
         NSAssert([path hasPrefix:[NSString HomePath]], @"非法的备份路径：%@", path);
     }
