@@ -7,6 +7,7 @@
 //
 
 #import "BDAddressBookManager.h"
+#import "BDAddressBookPerson.h"
 #import "BDCommonUtil.h"
 #import "NSString+FileManager.h"
 #import "NSObject+PerformBlock.h"
@@ -73,6 +74,59 @@ static void *const BDAddressBookManagerOperationQueueKey = (void *)&BDAddressBoo
         SafeBlockCall(completionBlock, error);
         NSAssert([path isFileExists], @"还原路径不存在：%@", path);
     }
+}
+
+- (NSArray *)getAllPersonInAddressBookRef:(ABAddressBookRef)addressBookRef {
+    if (addressBookRef) {
+        CFArrayRef records = ABAddressBookCopyArrayOfAllPeople(addressBookRef);
+        NSMutableArray *result = CFArrayGetCount(records) > 0 ? [NSMutableArray array] : nil;
+        for(int i = 0; i < CFArrayGetCount(records); i++) {
+            ABRecordRef record = CFArrayGetValueAtIndex(records, i);
+            BDAddressBookPerson *person = [[BDAddressBookPerson alloc]initWithABRecord:record];
+            [result addObject:person];
+        }
+        CFSafeRelease(records);
+        return result;
+    }
+    return nil;
+}
+
+- (NSError *)addOrUpdateAddressBookPersons:(NSArray *)persons addressBookRef:(ABAddressBookRef)addressBookRef {
+    NSError *error = nil;
+    if (addressBookRef) {
+        for (BDAddressBookPerson *person in persons) {
+            CFErrorRef errorRef = NULL;
+            if (person.recordID) {
+                
+                //更新操作,更新操作需要做删除和添加2步操作，如果只做添加，耗时比较长
+                ABRecordRef sourceRecord = ABAddressBookGetPersonWithRecordID(addressBookRef, [person.recordID intValue]);
+                BDAddressBookPerson *updatePerson = [[BDAddressBookPerson alloc]initWithABRecord:sourceRecord];
+                [updatePerson mergeFromUpdatePerson:person];
+                ABRecordRef updateRecord = [updatePerson createRecordRefWithoutRecordID];
+                
+                ABAddressBookRemoveRecord(addressBookRef, sourceRecord,  &errorRef);
+                if (errorRef == NULL) {
+                    ABAddressBookAddRecord(addressBookRef, updateRecord, &errorRef);
+                }
+                CFSafeRelease(updateRecord);
+                
+            } else {
+                
+                //添加操作
+                ABRecordRef addRecord = [person createRecordRefWithoutRecordID];
+                ABAddressBookAddRecord(addressBookRef, addRecord, &errorRef);
+                CFSafeRelease(addRecord);
+            }
+            if (errorRef != NULL) {
+                error = [NSError errorWithDomain:@"添加或更新记录失败" code:BDABMAddOrUpdateRecordError userInfo:@{@"sourceError":CFBridgingRelease(errorRef)}];
+                break;
+            }
+        }
+        if (error == nil) {
+            error = [self saveIfNeedAddressBookRef:addressBookRef];
+        }
+    }
+    return error;
 }
 
 #pragma mark - 内部方法

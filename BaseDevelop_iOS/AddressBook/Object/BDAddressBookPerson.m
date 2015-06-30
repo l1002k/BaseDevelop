@@ -12,7 +12,8 @@
 
 @interface BDAddressBookPersonValueInfo ()
 
-@property(nonatomic)NSString *labelKey;
+@property(nonatomic)NSNumber *valueIdentifier;
+@property(nonatomic)NSString *key;
 
 @end
 
@@ -152,35 +153,15 @@
     ABPropertyType type = ABPersonGetTypeOfProperty(property);
     CFTypeRef ref = ABRecordCopyValue(record, property);
     id result = nil;
-    switch (type) {
-        case kABInvalidPropertyType:
-            NSAssert(NO, @"查下SDK为什么propertyID : %@, name : %@ 的值类型不合法", @(property), CFBridgingRelease(ABPersonCopyLocalizedPropertyName(property)));
-            break;
-        case kABStringPropertyType:
-        case kABIntegerPropertyType:
-        case kABRealPropertyType:
-        case kABDateTimePropertyType:
-        case kABDictionaryPropertyType:
-            result = [self parseSingleRef:ref propertyName:propertyName];
-            break;
-        case kABMultiStringPropertyType:
-        case kABMultiIntegerPropertyType:
-        case kABMultiRealPropertyType:
-        case kABMultiDateTimePropertyType:
-        case kABMultiDictionaryPropertyType:
-            result = [self parseMultiValueRef:ref propertyName:propertyName];
-            break;
-        default:
-            NSAssert(NO, @"未检查过的值类型propertyID : %@, name : %@, type : %@",@(property), CFBridgingRelease(ABPersonCopyLocalizedPropertyName(property)), @(type));
-            break;
+    if (type == kABInvalidPropertyType) {
+        NSAssert(NO, @"查下SDK为什么propertyName : %@, propertyID : %@, name : %@ 的值类型不合法", propertyName, @(property), CFBridgingRelease(ABPersonCopyLocalizedPropertyName(property)));
+    } else if (type & kABMultiValueMask) {
+        result = [self parseMultiValueRef:ref propertyName:propertyName];
+    } else {
+        result = (__bridge id)ref;
     }
     CFSafeRelease(ref);
     return result;
-}
-
-/*--------下面的方法是解析单个属性的值--------------*/
-+ (id)parseSingleRef:(CFTypeRef)ref propertyName:(NSString *)propertyName{
-    return (__bridge id)ref;
 }
 
 + (id)parseMultiValueRef:(ABMultiValueRef)ref propertyName:(NSString *)propertyName{
@@ -225,36 +206,19 @@
         if (property != kABPropertyInvalidID && value) {
             
             ABPropertyType type = ABPersonGetTypeOfProperty(property);
-            switch (type) {
-                case kABInvalidPropertyType:
-                    NSAssert(NO, @"查下SDK为什么propertyName : %@, propertyID : %@, name : %@ 的值类型不合法", propertyName, @(property), CFBridgingRelease(ABPersonCopyLocalizedPropertyName(property)));
-                    break;
-                case kABStringPropertyType:
-                case kABIntegerPropertyType:
-                case kABRealPropertyType:
-                case kABDateTimePropertyType:
-                case kABDictionaryPropertyType:
-                    ABRecordSetValue(person, property, (__bridge CFTypeRef)value, &errorRef);
-                    break;
-                case kABMultiStringPropertyType:
-                case kABMultiIntegerPropertyType:
-                case kABMultiRealPropertyType:
-                case kABMultiDateTimePropertyType:
-                case kABMultiDictionaryPropertyType:
-                {
-                    if ([value isKindOfClass:NSArray.class] && [value count] > 0) {
-                        ABMutableMultiValueRef multiValueRef = ABMultiValueCreateMutable(type);
-                        for(BDAddressBookPersonValueInfo *info in value) {
-                            ABMultiValueAddValueAndLabel(multiValueRef, (__bridge CFTypeRef)info.value, (__bridge CFStringRef)info.labelKey, NULL);
-                        }
-                        ABRecordSetValue(person, property, multiValueRef, &errorRef);
-                        CFSafeRelease(multiValueRef);
+            if (type == kABInvalidPropertyType) {
+                NSAssert(NO, @"查下SDK为什么propertyName : %@, propertyID : %@, name : %@ 的值类型不合法", propertyName, @(property), CFBridgingRelease(ABPersonCopyLocalizedPropertyName(property)));
+            } else if (type & kABMultiValueMask) {
+                if ([value isKindOfClass:NSArray.class] && [value count] > 0) {
+                    ABMutableMultiValueRef multiValueRef = ABMultiValueCreateMutable(type);
+                    for(BDAddressBookPersonValueInfo *info in value) {
+                        ABMultiValueAddValueAndLabel(multiValueRef, (__bridge CFTypeRef)info.value, (__bridge CFStringRef)info.labelKey, NULL);
                     }
-                    break;
+                    ABRecordSetValue(person, property, multiValueRef, &errorRef);
+                    CFSafeRelease(multiValueRef);
                 }
-                default:
-                    NSAssert(NO, @"未检查过的值类型propertyName : %@, propertyID : %@, name : %@, type : %@", propertyName, @(property), CFBridgingRelease(ABPersonCopyLocalizedPropertyName(property)), @(type));
-                    break;
+            } else {
+                ABRecordSetValue(person, property, (__bridge CFTypeRef)value, &errorRef);
             }
             
             if (errorRef) {
@@ -264,6 +228,17 @@
         }
     }
     return person;
+}
+
+#pragma mark - BDAddressBookPerson的合并
+- (void)mergeFromUpdatePerson:(BDAddressBookPerson *)updatePerson {
+    NSArray *unHandleProperty = @[@"recordID", @"originalImage", @"thumbnailImage"];
+    for(NSString *propertyName in [NSObject propertyNamesForClass:self.class]) {
+        id value = nil;
+        if (![unHandleProperty containsObject:propertyName] && (value =[updatePerson valueForKey:propertyName])) {
+            [self setValue:value forKey:propertyName];
+        }
+    }
 }
 
 @end

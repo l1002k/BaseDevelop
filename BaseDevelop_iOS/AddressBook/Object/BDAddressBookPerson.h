@@ -12,9 +12,14 @@
 //某些property的值是键值对，但是key会重复
 @interface BDAddressBookPersonValueInfo : NSObject
 
-@property(nonatomic)NSNumber *valueIdentifier;
-@property(nonatomic, readonly)NSString *labelKey; //AddressBook库使用的关键字
-@property(nonatomic)NSString *key;                //由labelKey转换而来
+@property(nonatomic, readonly)NSNumber *valueIdentifier;//数组中位置
+@property(nonatomic, readonly)NSString *key;    //由labelKey转换而来
+
+/*
+ * 初始化的时候只需要搞定这2个值就OK
+ * phone的labelKey参见kABPersonPhoneMobileLabel
+ */
+@property(nonatomic)NSString *labelKey;         //AddressBook库使用的关键字
 @property(nonatomic)id value;
 
 @end
@@ -75,6 +80,11 @@
 @property(nonatomic)NSArray *relatedNames;          //关联人
 @property(nonatomic)NSArray *address;               //地址
 
+/*
+ * 下面的2个函数主要用于person的add||update操作
+ *  merge操作的规则是updatePerson的非空字段直接替换, 除了
+ */
 - (ABRecordRef)createRecordRefWithoutRecordID;
+- (void)mergeFromUpdatePerson:(BDAddressBookPerson *)updatePerson;
 
 @end

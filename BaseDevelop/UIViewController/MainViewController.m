@@ -12,6 +12,8 @@
 #import "PushViewController.h"
 #import "PresentViewController.h"
 #import "BDNavigationViewController.h"
+#import "BDAddressBookManager.h"
+#import "BDAddressBookPerson.h"
 
 @interface MainViewController ()
 {
@@ -39,7 +41,31 @@
 }
 
 - (void)dismiss:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+//    [self dismissViewControllerAnimated:YES completion:NULL];
+    BDAddressBookManager *manager = [[BDAddressBookManager alloc] init];
+    [manager performABOperationBlockInABOQ:^(ABAddressBookRef addressBookRef, NSError *error) {
+        if (error == nil) {
+            NSArray *persons = [manager getAllPersonInAddressBookRef:addressBookRef];
+            NSMutableArray *modifyPersons = [NSMutableArray array];
+            for(BDAddressBookPerson *person in persons) {
+                NSMutableArray *phone = [NSMutableArray arrayWithArray:person.phone];
+                BDAddressBookPersonValueInfo *phoneItem = [[BDAddressBookPersonValueInfo alloc]init];
+                phoneItem.labelKey = (__bridge NSString *)kABPersonPhoneIPhoneLabel;
+                phoneItem.value = @"123456789";
+                [phone addObject:phoneItem];
+                
+                BDAddressBookPerson *updatePerson =  [[BDAddressBookPerson alloc]init];
+                updatePerson.recordID = person.recordID;
+                updatePerson.phone = phone;
+                [modifyPersons addObject:updatePerson];
+                
+                BDAddressBookPerson *addPerson = [[BDAddressBookPerson alloc]init];
+                [addPerson mergeFromUpdatePerson:person];
+                [modifyPersons addObject:addPerson];
+            }
+            error = [manager addOrUpdateAddressBookPersons:modifyPersons addressBookRef:addressBookRef];
+        }
+    }];
 }
 
 - (IBAction)statusBarAction:(id)sender {
