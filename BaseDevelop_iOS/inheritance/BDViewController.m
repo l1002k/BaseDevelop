@@ -57,26 +57,6 @@ static BOOL BDVCIsPresentAndDismissAnimated = NO;
 }
 
 #pragma mark
-#pragma mark - statusBar
-- (void)setStatusBarHidden:(BOOL)hidden {
-    [self setStatusBarHidden:hidden withAnimation:UIStatusBarAnimationNone];
-}
-
-- (void)setStatusBarHidden:(BOOL)hidden withAnimation:(UIStatusBarAnimation)animation {
-    _commonConfig.isStatusBarHidden = hidden;
-    [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:animation];
-}
-
-- (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle {
-    [self setStatusBarStyle:statusBarStyle animated:NO];
-}
-
-- (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle animated:(BOOL)animated {
-    _commonConfig.statusBarStyle = statusBarStyle;
-    [[UIApplication sharedApplication] setStatusBarStyle:statusBarStyle animated:animated];
-}
-
-#pragma mark
 #pragma mark - trasition method
 - (void)willTransitionTo:(BDViewController *)toViewController actionType:(BDViewControllerTransitionType)type animated:(BOOL)animated {
     
