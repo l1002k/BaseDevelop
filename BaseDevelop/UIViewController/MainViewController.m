@@ -12,7 +12,6 @@
 #import "PushViewController.h"
 #import "PresentViewController.h"
 #import "BDNavigationViewController.h"
-#import "BDAddressBookManager.h"
 
 @interface MainViewController ()
 {
@@ -40,8 +39,7 @@
 }
 
 - (void)dismiss:(UIBarButtonItem *)sender {
-//    [self dismissViewControllerAnimated:YES completion:NULL];
-    BDAddressBookManager *manager = [BDAddressBookManager new];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (IBAction)statusBarAction:(id)sender {
@@ -52,10 +50,10 @@
 //    }
     if ([UIApplication sharedApplication].statusBarHidden) {
         isHidden = NO;
-        [self setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     } else {
         isHidden = YES;
-        [self setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     }
 }
 
