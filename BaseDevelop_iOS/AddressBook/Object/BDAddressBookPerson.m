@@ -51,6 +51,7 @@
 #pragma mark - 公用属性
 + (ABPropertyID)getAddressPropertyIDFromPropertyName:(NSString *)propertyName {
     static NSDictionary *nameToIDDictionary;
+    static NSArray * validPropertyWithoutPropertyID;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         nameToIDDictionary = @{
@@ -80,10 +81,11 @@
                                 @"relatedNames":@(kABPersonRelatedNamesProperty),
                                 @"address":@(kABPersonAddressProperty),
                                };
+        
+        validPropertyWithoutPropertyID = @[@"recordID", @"originalImage", @"thumbnailImage", @"sourceImage"];
     });
     NSNumber *propertyID = [nameToIDDictionary objectForKey:propertyName];
-   if ([propertyName isEqualToString:@"recordID"] || [propertyName isEqualToString:@"thumbnailImage"] || [propertyName isEqualToString:@"originalImage"]) {
-       NSAssert(NO, @"recordID, thumbnailImage, originalImage没有propertyID属性");
+   if ([validPropertyWithoutPropertyID containsObject:propertyName]) {
        return kABPropertyInvalidID;
     } else if (propertyID == nil) {
         //对于ios8新增的字段进行单独处理，兼容ios7
@@ -91,7 +93,7 @@
             return SystemVersionHigherThanOrEqualTo(@"8.0")?kABPersonAlternateBirthdayProperty:kABPropertyInvalidID;
         }
         
-        NSAssert(NO, @"未在nameToIDDictionary字典中定义的propertyName:%@",propertyName);
+        NSAssert(NO, @"未知的propertyName:%@",propertyName);
         return kABPropertyInvalidID;
     }
     return [propertyID intValue];
