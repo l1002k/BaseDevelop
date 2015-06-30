@@ -67,8 +67,6 @@ static BOOL BDVCIsPresentAndDismissAnimated = NO;
 }
 
 - (void)willTransitionedFrom:(BDViewController *)fromViewController actionType:(BDViewControllerTransitionType)type animated:(BOOL)animated {
-    [self setStatusBarHidden:_commonConfig.isStatusBarHidden withAnimation:UIStatusBarAnimationFade];
-    
     
 }
 
