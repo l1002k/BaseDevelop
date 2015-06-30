@@ -243,7 +243,7 @@
                 case kABMultiDictionaryPropertyType:
                 {
                     if ([value isKindOfClass:NSArray.class] && [value count] > 0) {
-                        ABMutableMultiValueRef multiValueRef = ABMultiValueCreateMutable(property);
+                        ABMutableMultiValueRef multiValueRef = ABMultiValueCreateMutable(type);
                         for(BDAddressBookPersonValueInfo *info in value) {
                             ABMultiValueAddValueAndLabel(multiValueRef, (__bridge CFTypeRef)info.value, (__bridge CFStringRef)info.labelKey, NULL);
                         }
