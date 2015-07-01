@@ -27,6 +27,9 @@
 		E67CB01A1B427AA0001B7B14 /* UIImage+Util.h in Headers */ = {isa = PBXBuildFile; fileRef = E67CB0181B427AA0001B7B14 /* UIImage+Util.h */; };
 		E67CB01B1B427AA0001B7B14 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CB0191B427AA0001B7B14 /* UIImage+Util.m */; };
 		E67CB01C1B427AA0001B7B14 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CB0191B427AA0001B7B14 /* UIImage+Util.m */; };
+		E67CB0881B44048B001B7B14 /* NSBundle+Language.h in Headers */ = {isa = PBXBuildFile; fileRef = E67CB0861B44048B001B7B14 /* NSBundle+Language.h */; };
+		E67CB0891B44048B001B7B14 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CB0871B44048B001B7B14 /* NSBundle+Language.m */; };
+		E67CB08A1B44048B001B7B14 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CB0871B44048B001B7B14 /* NSBundle+Language.m */; };
 		E69DCED21A80A5CE0002712D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E69DCED01A80A5CE0002712D /* MainViewController.m */; };
 		E69DCED31A80A5CE0002712D /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69DCED11A80A5CE0002712D /* MainViewController.xib */; };
 		E69DCEDA1A80B7060002712D /* UIView+FrameAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E69DCED61A80B7060002712D /* UIView+FrameAdditions.h */; };
@@ -101,6 +104,8 @@
 		E67CB0131B427A77001B7B14 /* NSString+FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FileManager.m"; sourceTree = "<group>"; };
 		E67CB0181B427AA0001B7B14 /* UIImage+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Util.h"; sourceTree = "<group>"; };
 		E67CB0191B427AA0001B7B14 /* UIImage+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
+		E67CB0861B44048B001B7B14 /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
+		E67CB0871B44048B001B7B14 /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
 		E69DCECF1A80A5CE0002712D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		E69DCED01A80A5CE0002712D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E69DCED11A80A5CE0002712D /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -278,6 +283,15 @@
 			path = UIImage;
 			sourceTree = "<group>";
 		};
+		E67CB0851B44046F001B7B14 /* NSBundle */ = {
+			isa = PBXGroup;
+			children = (
+				E67CB0861B44048B001B7B14 /* NSBundle+Language.h */,
+				E67CB0871B44048B001B7B14 /* NSBundle+Language.m */,
+			);
+			path = NSBundle;
+			sourceTree = "<group>";
+		};
 		E69DCECE1A80A5CE0002712D /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +311,7 @@
 		E69DCED41A80B7060002712D /* category */ = {
 			isa = PBXGroup;
 			children = (
+				E67CB0851B44046F001B7B14 /* NSBundle */,
 				E67CB0171B427AA0001B7B14 /* UIImage */,
 				E67CB0111B427A77001B7B14 /* NSString */,
 				E63B8F271B0489C600B99986 /* UIApplication */,
@@ -375,6 +390,7 @@
 				E66C40451AFA3170004665D4 /* NSObject+RuntimeProgram.h in Headers */,
 				E6E1E8901B18438B0011CC84 /* NSObject+Property.h in Headers */,
 				E69DCEDA1A80B7060002712D /* UIView+FrameAdditions.h in Headers */,
+				E67CB0881B44048B001B7B14 /* NSBundle+Language.h in Headers */,
 				E69DCEE81A80CE310002712D /* BDCommonUtil.h in Headers */,
 				E67CB0141B427A77001B7B14 /* NSString+FileManager.h in Headers */,
 				F5DCB4D91B18AF8A00CC0F38 /* BDAddressBookSource.h in Headers */,
@@ -523,6 +539,7 @@
 				E614278B1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */,
 				E66C40461AFA3170004665D4 /* NSObject+RuntimeProgram.m in Sources */,
 				E69DCEDE1A80B7060002712D /* UIView+Util.m in Sources */,
+				E67CB0891B44048B001B7B14 /* NSBundle+Language.m in Sources */,
 				E69DCEDB1A80B7060002712D /* UIView+FrameAdditions.m in Sources */,
 				E63B8F2B1B0489DE00B99986 /* UIApplication+Util.m in Sources */,
 				E64B5A5A1A7F617500568B67 /* AppDelegate.m in Sources */,
@@ -556,6 +573,7 @@
 				E69DCEDF1A80B7060002712D /* UIView+Util.m in Sources */,
 				E66C40471AFA3170004665D4 /* NSObject+RuntimeProgram.m in Sources */,
 				E6C3E2501B1C527A00C42DEE /* NSObject+PerformBlock.m in Sources */,
+				E67CB08A1B44048B001B7B14 /* NSBundle+Language.m in Sources */,
 				F5DCB4D51B18AF8A00CC0F38 /* BDAddressBookObject.m in Sources */,
 				E614278C1AB6DFA2000ECA44 /* BDNavigationBar.m in Sources */,
 				F5DCB4DB1B18AF8A00CC0F38 /* BDAddressBookSource.m in Sources */,
