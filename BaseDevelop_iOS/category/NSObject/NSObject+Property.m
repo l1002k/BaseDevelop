@@ -71,35 +71,8 @@ static const char *getPropertyType(objc_property_t property) {
     return result.count > 0 ? result : nil;
 }
 
-- (NSDictionary *)covertToDictionary
-{
-    NSMutableDictionary *result = [NSMutableDictionary dictionary];
-    NSArray *propertyNames = [self allPropertyNamesExceptNSObject];
-    for(NSString *propertyName in propertyNames)
-    {
-        id value = [self valueForKey:propertyName];
-        if (value)
-        {
-            NSDictionary *dictionary = [self getDictionaryWithPropertyName:propertyName];
-            if (dictionary)
-            {
-                [result addEntriesFromDictionary:dictionary];
-            }else
-            {
-                [result setObject:value forKey:propertyName];
-            }
-        }
-    }
-    return result.count > 0 ? result : nil;
-}
-
-- (NSDictionary *)getDictionaryWithPropertyName:(NSString *)propertyName
-{
-    return nil;
-}
-
 //获取属性名称数组
-- (NSDictionary *)classPropsFor:(Class)klass
++ (NSDictionary *)propertyClassNameForClass:(Class)klass
 {
     if (klass == NULL) {
         return nil;
@@ -128,8 +101,43 @@ static const char *getPropertyType(objc_property_t property) {
     return [NSDictionary dictionaryWithDictionary:results];
 }
 
+- (NSDictionary *)allPropertyClassNamesExceptNSObject {
+    NSMutableDictionary *results = [NSMutableDictionary dictionary];
+    for (Class currentClass = [self class]; currentClass != [NSObject class]; currentClass = [currentClass superclass]) {
+        [results addEntriesFromDictionary:[NSObject propertyClassNameForClass:currentClass]];
+    }
+    return results;
+}
+
 + (NSArray *)notProcessPropertyNames {
     return @[@"hash", @"superclass", @"description", @"debugDescription"];
+}
+
+- (NSDictionary *)covertToDictionary
+{
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    NSArray *propertyNames = [self allPropertyNamesExceptNSObject];
+    for(NSString *propertyName in propertyNames)
+    {
+        id value = [self valueForKey:propertyName];
+        if (value)
+        {
+            NSDictionary *dictionary = [self getDictionaryWithPropertyName:propertyName];
+            if (dictionary)
+            {
+                [result addEntriesFromDictionary:dictionary];
+            }else
+            {
+                [result setObject:value forKey:propertyName];
+            }
+        }
+    }
+    return result.count > 0 ? result : nil;
+}
+
+- (NSDictionary *)getDictionaryWithPropertyName:(NSString *)propertyName
+{
+    return nil;
 }
 
 @end

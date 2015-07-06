@@ -10,10 +10,14 @@
 
 @interface NSObject (Property)
 
-//获取制定Class的所有属性名
+//获取定制Class的所有属性名
 + (NSArray *)propertyNamesForClass:(Class)cls;
 //获取当前对象的所有属性名除了NSObject
 - (NSArray *)allPropertyNamesExceptNSObject;
+//获取定制Class的所有属性类型名
++ (NSDictionary *)propertyClassNameForClass:(Class)klass;
+//获取当前对象的所有属性类型名除了NSObject
+- (NSDictionary *)allPropertyClassNamesExceptNSObject;
 
 //讲当前对象转换成NSDictionary
 - (NSDictionary *)covertToDictionary;
